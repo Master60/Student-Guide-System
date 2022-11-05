@@ -5,3 +5,7 @@ var ready = (callback) => {
 ready(() => {
     document.querySelector(".header").style.height = window.innerHeight + "px";
 })
+
+setTimeout(function() {
+	$('#demo-modal').modal();
+}, 500);
