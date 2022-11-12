@@ -1,25 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bassel</title>
     <style>
-        
         .PP {
             position: relative;
         }
+
         .OP {
-            width: 1500px;
+            width: 100%;
             height: 700px;
             background-color: rgba(0, 0, 0, 0.75);
         }
+
         .OP1 {
-            width: 1500px;
+            width: 100%;
             height: 700px;
-            background-color: rgba(255, 0, 0, 0.75);
+            background-color: rgba(255, 0, 0);
         }
+
+        .OP2 {
+            width: 100%;
+            height: 700px;
+            background-color: rgba(0, 255, 0, 0.75);
+        }
+
         .Abassel {
             position: absolute;
             top: 250px;
@@ -27,25 +36,49 @@
             color: aqua;
             font-size: 80pt;
         }
-        .divFixed {
+
+        #divFixed {
             position: fixed;
             background-image: url("img/apple.png");
             background-repeat: no-repeat;
             background-size: cover;
-            width: 100%;
+            width: 98.9%;
             height: 100%;
         }
     </style>
+    <script>
+        window.onload = async function (e) {
+            let Bassel = await document.getElementById("BasselElrep");
+            let fixed = await document.getElementById("divFixed");
+            window.onscroll = function (e1) {
+                console.log("I am here");
+                if (window.scrollY >= Bassel.offsetHeight) {
+                    console.log("I am here");
+                    fixed.style.backgroundImage = "url(img/computers.png)";
+                }
+                else {
+                    fixed.style.backgroundImage = "url(img/apple.png)";
+                }
+            }
+        }
+    </script>
 </head>
+
 <body>
-    <div class="divFixed"></div>
-    <div class="PP">
+    <div id="divFixed"></div>
+    <div class="PP" id="BasselElrep">
         <div class="OP"></div>
         <div class="Abassel">Bassel el rep</div>
     </div>
     <div class="PP">
         <div class="OP1"></div>
         <div class="Abassel">Bassel el rep</div>
-    </div>    
+    </div>
+    <div class="PP">
+        <div class="OP2"></div>
+        <div class="Abassel">Bassel el rep</div>
+    </div>
+    </div>
 </body>
+
 </html>
