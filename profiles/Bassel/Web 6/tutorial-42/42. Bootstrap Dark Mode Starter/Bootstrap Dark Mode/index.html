@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Bootstrap Dark Mode</title>
+	<meta name="author" content="w3newbie.com">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<!-- Style.css -->
+	<link id="style1" rel="stylesheet" href="css/style.css">
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.min.css">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="landing">
+	<div class="home-wrap">
+		<div class="home-inner">
+		</div>
+	</div>
+</div>
+
+	<!-- Start Landing Page Caption -->
+	<div class="caption text-center text-uppercase">
+		<h1 class="animate__animated animate__fadeInUp animate__fast">Bootstrap</h1>
+	</div>
+	<!-- End Landing Page Caption -->
+
+	<div class="container py-5">
+		<div class="row text-center">
+
+			<h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil mollitia, non porro exercitationem facilis molestiae repellat amet cum laudantium neque. Vero nostrum corrupti repudiandae voluptate ullam ipsa perferendis assumenda voluptatibus!</h1>
+
+			<h1>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum optio, quam voluptatem cumque officiis placeat quae tenetur? Fugit delectus deserunt voluptas obcaecati illo, porro veniam esse laboriosam velit sunt amet?</h1>
+
+			<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem expedita vero tempore suscipit ipsum ea modi tempora veniam neque dicta itaque corporis, sed eaque laborum ex natus tenetur amet qui.</h1>
+
+		</div>
+	</div>
+
+<!-- Script -->
+<script>
+	function toggle() { // toggle
+		var a = document.getElementById("style1"); // style sheet id
+		a.x = 'css/style2' == a.x ? 'css/style' : 'css/style2'; //switch file loop
+		a.href = a.x + '.css'; //add .css
+	}
+</script>
+<!-- jQuery -->
+<script src="js/jquery-3.5.1.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="js/bootstrap.min.js"></script>
+
+<!-- References:
+	Toggle: https://codepen.io/GemmaStiles/pen/NWxjrVG
+	Switch Style Sheets: https://stackoverflow.com/questions/18368319/toggle-css-sheets-on-click-with-javascript -->
+
+</body>
+</html>
