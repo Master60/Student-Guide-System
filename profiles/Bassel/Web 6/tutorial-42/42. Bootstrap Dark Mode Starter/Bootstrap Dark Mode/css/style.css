@@ -20,16 +20,60 @@ body {
 
 /*-- Landing Page Caption --*/
 
+.caption {
+  width: 100%;
+  max-width: 100%;
+  position: absolute;
+  top: 25%;
+  z-index: 1;
+}
+
+.caption h1 {
+  font-size: 6.5rem;
+  letter-spacing: .3rem;
+  text-shadow: .2rem .2rem 1rem black;
+  padding-bottom: 1.2rem;
+}
+
+.caption h3 {
+  font-size: 4rem;
+  letter-spacing: 1rem;
+  text-shadow: .2rem .2rem 1rem black;
+  padding-bottom: 2.5rem;
+}
 
 /*-- Dark Mode Switch --*/
 
+.slider {
+  background-color: #6e6e6e;
+  box-shadow: .1rem .1rem .8rem black;
+  transition: .5s;
+}
 
+.slider:before {
+  background-color: white;
+  transition: .5s;
+}
+
+input:checked + .slider {
+  background-color: #1849ab;
+}
 
 /*============= MEDIA QUERIES =============*/
 
 /* Devices under 768px (md) */
 @media (max-width: 767.98px) {
-
+  .caption h1 {
+    font-size: 3.7rem;
+    letter-spacing: .15rem;
+    padding-bottom: .5rem;
+  }
+  
+  .caption h3 {
+    font-size: 2.7rem;
+    letter-spacing: .2rem;
+    padding-bottom: 1.2rem;
+  }
 }
 
 
