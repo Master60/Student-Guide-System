@@ -3,7 +3,7 @@
 body {
   overflow-x: hidden;
   font-family: 'Lato', sans-serif;
-  color: #505962;
+  color: #595a5e;
 }
 
 .offset:before {
@@ -22,15 +22,20 @@ body {
   font-size: .9rem;
   /*1 rem = 16 pixels*/
   letter-spacing: .1rem;
-  background: rgba(0, 0, 0, 0.6) !important;
+/*  background: rgba(14, 44, 97, 0.84) !important;*/
+background: rgba(0, 0, 0, 0.89) !important;
+
 }
 
 .navbar-brand img {
   height: 2rem;
+  margin-right: 1rem;
 }
 
+
 .navbar-nav li {
-  padding-right: .7rem;
+  padding-right: 2.9rem;
+  font-size: 0.72rem;
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -40,7 +45,7 @@ body {
 
 .navbar-dark .navbar-nav .nav-link.active,
 .navbar-dark .navbar-nav .nav-link:hover {
-  color: #1ebba3
+  color: #FFD700;
 }
 
 /*--- Landing Page --*/
@@ -64,7 +69,7 @@ body {
   font-weight: 700;
   letter-spacing: .3rem;
   text-shadow: .1rem .1rem .8rem black;
-  padding-bottom: 1rem;
+
 }
 
 .caption h3 {
@@ -73,19 +78,47 @@ body {
   padding-bottom: 1.6rem;
 }
 
-.btn-lg {
+.caption img
+{
+  height: 6rem;
+  margin-bottom: 2rem;
+}
+
+.btn-lg1 {
   border-width: medium;
   border-radius: 0;
   padding: .6rem 1.3rem;
-  font-size: 1.1rem;
+  font-size: 0.7rem;
+  margin-right: 1rem
 }
+
+.btn-lg1:hover {
+  background-color: #FFD700;
+  border-color:  #FFD700;
+  color: white;
+  opacity: 80%;
+}
+
+.btn-lg2 {
+  border-width: medium;
+  border-radius: 0;
+  padding: .6rem 1.3rem;
+  font-size: 0.7rem;
+}
+.btn-lg2:hover {
+  background-color: #FFD700;
+  border-color:  #FFD700;
+  color: white;
+  opacity: 80%;
+}
+
 
 /*--- Course Section --*/
 
 .narrow {
   width: 75%;
-  margin: 1.5rem auto;
-  padding-top: 2rem;
+  margin: 1rem auto;
+  padding-top: 0rem;
 }
 
 .narrow h1 {
@@ -100,92 +133,123 @@ body {
   padding: .6rem 1.2rem;
   margin: 1rem;
   color: white;
-  background-color: #1ebba3;
-  border-color: #1ebba3;
+  background-color: #1a4f87;
+  border-color: #1a4f87;
 }
 
 .btn-secondary:hover {
-  background-color: #189582;
-  border-color: #189582;
+  background-color: #102c63;
+  border-color:  #102c63;
 }
 
 /*--- Features Section --*/
+
 
 .jumbotron {
   margin-bottom: 0;
   padding: 2rem 0 3.5rem;
   border-radius: 0;
+  /*background: rgba(255, 255, 255, 0.75);*/
+
 }
 
 h3.heading {
   font-size: 1.9rem;
   font-weight: 700;
   text-transform: uppercase;
-  margin-bottom: 1.9rem;
+  margin-bottom: 1.5rem;
+  margin-top: 0rem;
+
 }
 
 .heading-underline {
   width: 3rem;
   height: .2rem;
-  background-color: #1ebba3;
+  background-color: #1a4f87;
   margin: 0 auto 2rem;
 }
 
+
 .feature svg.svg-inline--fa {
-  color: #1ebba3;
+  color: #1a4f87;
 }
 
 .feature h3 {
   font-size: 1.3rem;
   text-transform: uppercase;
   padding-bottom: .4rem;
+  color: #0E2C61;
 }
 
 .feature p {
   font-size: 1.1rem;
+  margin-bottom: 2rem;
+  text-align: justify;
 }
 
-/*--- Resources Section --*/
+.feature {
+  padding: 0rem 0.8rem 0rem;
+
+}
+
+
+
+/*--- Vision Section --*/
 
 .fixed {
-  background-image: url(img/apple.png);
+
   z-index: -1;
 }
 
 .dark {
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.15);
   color: white;
-  padding: 7rem 2rem;
+  padding: 3rem 2rem 7rem 2rem;
 }
 
 .fixed-background h3 {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+
 }
 
 .fixed-background p {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  margin-left: 15rem;
+  margin-right: 15rem;
+  text-align: center;
+  font-size: 1.1rem;
+  letter-spacing: 0.1rem;
+  line-height: 2rem;
+  color: #FFD700;
 }
 
-/*--- Clients Section --*/
 
-.clients img {
+/*--- team Section --*/
+
+.team img {
   width: 100%;
   border-radius: 50%;
 }
 
 blockquote .svg-inline--fa {
-  color: #1ebba3;
+  color: #1a4f87;
   margin: 1rem;
 }
 
-.clients-hr {
-  border-top: .05rem solid #1ebba3;
+.team-hr {
+  border-top: .05rem solid #1a4f87;
+}
+
+.col-md-8 blockquote
+{
+  margin-bottom: 2.8rem;
 }
 
 /*--- Contact Section --*/
 
 footer {
-  background-color: #40474e;
+ background: rgba(23, 40, 58, 1) !important;
   color: white;
   padding: 2rem 0 2rem;
   margin-top: 1rem;
@@ -206,7 +270,7 @@ footer svg.svg-inline--fa {
 }
 
 footer svg.svg-inline--fa:hover {
-  color: #1ebba3 !important;
+  color: #1a4f87 !important;
 }
 
 hr.socket {
@@ -238,7 +302,7 @@ hr.socket {
     font-size: 1.5rem;
   }
 
-  .clients img {
+  .team img {
     width: 50%;
     display: block;
     margin: 0 auto;
@@ -247,7 +311,8 @@ hr.socket {
 
 #Fixed_Mina {
   position: fixed;
-  background-image: url("img/computers.png");
+  background-image: url("img/Books.jpeg");
+  filter: brightness(20%);
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
@@ -270,7 +335,8 @@ hr.socket {
 }
 
 #contact {
-  background-color: white;
+   background: rgba(23, 40, 58, 1) !important;
+
 }
 
 /*============ BOOTSTRAP BREAK POINTS:
