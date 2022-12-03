@@ -109,6 +109,10 @@ input[type="radio"]{
   width: 100%;
   margin-top: 20px;
 }
+#ttxx{
+
+  margin-top:40px;
+}
 .form-inner form .field input{
   height: 100%;
   width: 100%;
@@ -180,3 +184,30 @@ form .btn input[type="submit"]{
   font-weight: 500;
   cursor: pointer;
 }
+
+
+.field select {
+       background: transparent;
+       width: 329px;
+       padding: 5px;
+       font-size: 16px;
+       margin-bottom: 20px;
+
+       border-radius: 5px;
+       border-color: #cccfcd;
+       height: 47px;
+       box-shadow: 0px 2px 0.01px rgba(0,0,0,0.1);
+       -webkit-appearance: none;
+       -moz-appearance:none;
+       appearance: none;
+       }
+
+
+/*
+.field {
+       width: 271px;
+       height: 43px;
+       overflow: hidden;
+       background: url(img/cmbbox.png) no-repeat;
+       border: 0;
+       }
