@@ -50,58 +50,64 @@
             <form action="/register" class="signup" method="POST">
                <div class="field">
 
-                  <label for="User">SELECT USER:</label>
-                  <select name="User" id="User">
-                     <option value="null" selected disabled hidden> </option>
-                     <option value="student"> Student</option>
-                     <option value="Instructor">Instructor</option>
-                     <option value="adminstration">Adminstration</option>
-                     <option value="graduate">Graduate</option>
-                  </select>
-               </div>
-               <div class="field" id="ttxx">
-                  <input name="email" type="text" placeholder="Email Address" required>
-               </div>
-               <div class="field">
-                  <input name="pasword" type="password" placeholder="Password" required>
-               </div>
-               <div class="field">
-                  <input type="password" placeholder="Confirm password" required>
-               </div>
-               <div class="field btn">
-                  <div class="btn-layer"></div>
-                  <input type="submit" value="Signup">
-               </div>
-            </form>
+  <label for="User">SELECT USER:</label>
+   <select name="User" id="User">
+   <option value="null" selected disabled hidden> </option>
+   <option value="student"> Student</option>
+   <option value="Instructor">Instructor</option>
+   <option value="adminstration">Adminstration</option>
+   <option value="graduate">Graduate</option>
+ </select>
+
+<!--                 </div>
+                  <div class="field" id="ttxx">
+                     <input type="text" placeholder="Email Address" required>
+                  </div>
+                  <div class="field">
+                     <input type="password" placeholder="Password" required>
+                  </div>
+                  <div class="field">
+                     <input type="password" placeholder="Confirm password" required>
+                  </div>
+                -->
+                  <div class="field btn">
+                     <div class="btn-layer" ></div>
+                     <a href="signup.html">
+                     <input type="submit" value="Signup">
+                     </a>
+
+                  </div>
+
+
+               </form>
+            </div>
          </div>
       </div>
-   </div>
-   <script>
-      const loginText = document.querySelector(".title-text .login");
-      const loginForm = document.querySelector("form.login");
-      const loginBtn = document.querySelector("label.login");
-      const signupBtn = document.querySelector("label.signup");
-      const signupLink = document.querySelector("form .signup-link a");
-      signupBtn.onclick = (() => {
-         loginForm.style.marginLeft = "-50%";
-         loginText.style.marginLeft = "-50%";
-      });
-      loginBtn.onclick = (() => {
-         loginForm.style.marginLeft = "0%";
-         loginText.style.marginLeft = "0%";
-      });
-      signupLink.onclick = (() => {
-         signupBtn.click();
-         return false;
-      });
-   </script>
+     <script>
 
-   <% if (messages.length > 0) { %>
-      <script>
-            alert("<%= messages %>");
-         </script>
-   <% } %>
+         const loginText = document.querySelector(".title-text .login");
+         const loginForm = document.querySelector("form.login");
+         const loginBtn = document.querySelector("label.login");
+         const signupBtn = document.querySelector("label.signup");
+         const signupLink = document.querySelector("form .signup-link a");
 
-</body>
+        signupBtn.onclick = (()=>{
+           loginForm.style.marginLeft = "-50%";
+           loginText.style.marginLeft = "-50%";
+         });
+         loginBtn.onclick = (()=>{
+           loginForm.style.marginLeft = "0%";
+           loginText.style.marginLeft = "0%";
+         });
+       signupLink.onclick = (()=>{
+            signupBtn.click();
+            return false;
 
+         });
+
+      </script>
+
+
+
+   </body>
 </html>
