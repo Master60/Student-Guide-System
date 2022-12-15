@@ -27,13 +27,13 @@ app.use(function(req, res, next) { // Locals
     next();
 });
 
-app.use(UserRoute);
-
-app.use(express.static("assets"));
-
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
+app.use(UserRoute);
+
+app.use(express.static("assets"));
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));

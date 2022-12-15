@@ -32,6 +32,7 @@ router.post("/login", isLoggedIn, function (req, res) {
                 compare(req.body.password, rows[0].password, function(next) {
                     if (next) {
                         req.flash("success", "Welcome");
+                        res.redirect("/login");  // To be Modified
                     }
                     else {
                         console.log("err1");
