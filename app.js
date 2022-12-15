@@ -23,6 +23,7 @@ app.use(expressSession({
 
 app.use(function(req, res, next) { // Locals
     res.locals.messages = req.flash("success");
+    res.locals.errors = req.flash("error");
     next();
 });
 
@@ -36,8 +37,6 @@ app.use(bodyParser.urlencoded({
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
-
-require("dotenv").config();
 
 
 http.listen(2305, function () {
