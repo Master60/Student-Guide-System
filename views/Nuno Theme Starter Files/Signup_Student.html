@@ -5,7 +5,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box}
 
 /* Full-width input fields */
-input[type=text], input[type=password],input[type=R-password], input[type=mobile_no] {
+input[type=email], input[type=password],input[type=R-password], input[type=mobile_no] {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -14,7 +14,7 @@ input[type=text], input[type=password],input[type=R-password], input[type=mobile
   background: #f1f1f1;
 }
 
-input[type=text]{
+input[type=email]{
 margin-bottom: 0rem;
 }
 input[type=R-password]{
@@ -29,7 +29,7 @@ margin-bottom: 1.2rem;
 
 }
 
-input[type=text]:focus, input[type=password]:focus,input[type=R-password]:focus, input[type=mobile_no]:focus {
+input[type=email]:focus, input[type=password]:focus,input[type=R-password]:focus, input[type=mobile_no]:focus {
   background-color: #ddd;
   outline: none;
 }
@@ -98,18 +98,18 @@ button:hover {
 </style>
 <body>
 
-<form name="form1" style="border:1px solid #ccc">
+<form name="form1" id="login" style="border:1px solid #ccc">
   <div class="container">
     <h1>Sign Up</h1>
     <p>Please fill in this form to create an account.</p>
     <hr>
 
     <label for="email"><b>Email</b></label>
-    <input type="text" id="email2" placeholder="Enter Email" name="email" required >
+    <input type="email" id="email2" placeholder="Enter Email" name="email" required>
     <div class="msg"> <p>Email already exists</p> </div>
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input type="password" placeholder="Enter Password" id="pass" name="psw" required>
 
     <label for="psw-repeat"><b>Repeat Password</b></label>
     <input type="R-password" placeholder="Repeat Password" name="psw-repeat" required>
@@ -167,31 +167,11 @@ button:hover {
 
     <div class="clearfix">
       <button type="button" class="cancelbtn">Cancel</button>
-      <button type="submit" onclick="ValidateEmail(email)" class="signupbtn">Sign Up</button>
+      <button type="submit" class="signupbtn">Sign Up</button>
     </div>
   </div>
 </form>
 
 </body>
 
-<script>
-
-function ValidateEmail(inputText)
-{
-var email = document.getElementById("email2");
-var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-if(inputText.value.match(mailformat))
-{
-console.log(email);
-return true;
-}
-else
-{
-email.setSelectionRange(0, 0);
-email.focus();
-
-}
-}
-
-</script>
 </html>
