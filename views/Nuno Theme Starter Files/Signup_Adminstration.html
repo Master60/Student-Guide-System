@@ -5,7 +5,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box}
 
 /* Full-width input fields */
-input[type=text], input[type=password], input[type=mobile_no] {
+input[type=text], input[type=password], input[type=mobile_no], input[type=R-password] {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -19,6 +19,23 @@ input[type=text]:focus, input[type=password]:focus, input[type=mobile_no]:focus 
   outline: none;
 }
 
+input[type=text]{
+margin-bottom: 0rem;
+}
+input[type=R-password]{
+margin-bottom: 0rem;
+}
+input[type=password]{
+margin-bottom: 1.7rem;
+}
+
+.msg p{
+font-size: 0.8rem;
+color: #FF0000;
+margin-left: 0.1rem;
+margin-bottom: 1.2rem;
+
+}
 hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
@@ -91,12 +108,15 @@ button:hover {
 
     <label for="email"><b>Email</b></label>
     <input type="text" placeholder="Enter Email" name="email" required>
+    <div class="msg"> <p>Email already exists</p> </div>
+
 
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" required>
 
     <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+    <input type="R-password" placeholder="Repeat Password" name="psw-repeat" required>
+    <div class="msg"> <p>Password mismatch</p> </div>
 
      <label for="College"><b>College</b></label>
      <select name="College" id="College">
