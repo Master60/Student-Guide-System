@@ -124,7 +124,8 @@ CREATE TABLE INSTRUCTOR(
 );
 CREATE TABLE ResearchesAndProjects(
 	ResearchID varchar(20) not null,
-	Title varchar(50) not null, 
+	Title varchar(50) not null,
+    link varchar(200),
 	ReleaseDate  Date not null, 
     ProjectIntro varchar(20),
 	/*R_Description varchar(20) not null ,*/
