@@ -5,7 +5,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box}
 
 /* Full-width input fields */
-input[type=text], input[type=password], input[type=mobile_no], input[type=R-password] {
+input[type=email], input[type=password], input[type=tel] {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -14,18 +14,18 @@ input[type=text], input[type=password], input[type=mobile_no], input[type=R-pass
   background: #f1f1f1;
 }
 
-input[type=text]:focus, input[type=password]:focus, input[type=mobile_no]:focus {
+input[type=email]:focus, input[type=password]:focus, input[type=tel]:focus {
   background-color: #ddd;
   outline: none;
 }
 
-input[type=text]{
-margin-bottom: 0rem;
-}
-input[type=R-password]{
+input[type=email]{
 margin-bottom: 0rem;
 }
 input[type=password]{
+margin-bottom: 0rem;
+}
+input[type=tel]{
 margin-bottom: 1.7rem;
 }
 
@@ -107,7 +107,7 @@ button:hover {
     <hr>
 
     <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
+    <input type="email" placeholder="Enter Email" name="email" required>
     <div class="msg"> <p>Email already exists</p> </div>
 
 
@@ -115,7 +115,7 @@ button:hover {
     <input type="password" placeholder="Enter Password" name="psw" required>
 
     <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="R-password" placeholder="Repeat Password" name="psw-repeat" required>
+    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
     <div class="msg"> <p>Password mismatch</p> </div>
 
      <label for="College"><b>College</b></label>
@@ -141,7 +141,7 @@ button:hover {
     <br/>
 
     <label for="mobile_no"><b>Mobile Number</b></label>
-    <input type="mobile_no" placeholder="Mobile Number" name="mobile_no" required>
+    <input type="tel" pattern="01[0, 1, 2, 5][0-9]{8}" placeholder="Mobile Number" name="mobile_no" required>
     <br/>
 
 
