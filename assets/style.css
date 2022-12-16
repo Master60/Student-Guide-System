@@ -74,6 +74,10 @@ html,body{
 input[type="radio"]{
   display: none;
 }
+.par p{
+color: #FF0000;
+margin-top: 0.6rem;
+}
 #signup:checked ~ .slider-tab{
   left: 50%;
 }

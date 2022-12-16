@@ -1,54 +1,57 @@
 <html lang="en" dir="ltr">
-
-<head>
-   <meta charset="utf-8">
-   <title>Login and Registration Form in HTML | CodingNepal</title>
-   <link rel="stylesheet" href="/style.css">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-
-<body>
-   <div class="wrapper">
-      <div class="title-text">
-         <div class="title login">
-            Login Form
+   <head>
+      <meta charset="utf-8">
+      <title>Login and Registration Form in HTML | CodingNepal</title>
+      <link rel="stylesheet" href="/style.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   <body>
+      <div class="wrapper">
+         <div class="title-text">
+            <div class="title login">
+               Login Form
+            </div>
+            <div class="title signup">
+               Signup Form
+            </div>
          </div>
-         <div class="title signup">
-            Signup Form
-         </div>
-      </div>
-      <div class="form-container">
-         <div class="slide-controls">
-            <input type="radio" name="slide" id="login" checked>
-            <input type="radio" name="slide" id="signup">
-            <label for="login" class="slide login">Login</label>
-            <label for="signup" class="slide signup">Signup</label>
-            <div class="slider-tab"></div>
-         </div>
-         <div class="form-inner">
-            <form action="/login" class="login" method="POST">
-               <div class="field">
-                  <input name="username" type="text" placeholder="User_ID" required>
-               </div>
-               <div class="field">
-                  <input name="password" type="password" placeholder="Password" required>
-               </div>
-               <div class="pass-link">
-                  <a href="#">Forgot password?</a>
-               </div>
-               <div class="field btn">
-                  <div class="btn-layer"></div>
-                  <input type="submit" value="Login">
-               </div>
-               <div class="signup-link">
-                  Not a member? <a href="">Signup now</a>
-               </div>
-            </form>
+         <div class="form-container">
+            <div class="slide-controls">
+               <input type="radio" name="slide" id="login" checked>
+               <input type="radio" name="slide" id="signup" >
+               <label for="login" class="slide login">Login</label>
+               <label for="signup" class="slide signup">Signup</label>
+               <div class="slider-tab"></div>
+            </div>
+            <div class="form-inner">
+               <form action="/login" class="login" method="POST">
+                  <div class="field">
+                     <input type="text" placeholder="User_ID" required>
+                  </div>
+                  <div class="field">
+                     <input type="password" placeholder="Password" required>
+                  </div>
+                  <div class="pass-link">
+                     <a href="#">Forgot password?</a>
+                  </div>
+                  <% if (errors.length > 0) { %>
+                     <div class="par">
+                        <p>Invalid username or password</p>
+                     </div>
+                  <% } %>
+                  <div class="field btn">
+                     <div class="btn-layer"></div>
+                     <input type="submit" value="Login">
+                  </div>
+                  <div class="signup-link">
+                     Not a member? <a href="">Signup now</a>
+                  </div>
+               </form>
 
 
 
-            <form action="/register" class="signup" method="POST">
-               <div class="field">
+               <form action="/register" class="signup" method="GET">
+                 <div class="field">
 
   <label for="User">SELECT USER:</label>
    <select name="User" id="User">
@@ -110,10 +113,4 @@
 
 
    </body>
-
-   <% if (messages.length > 0) { %>
-      <script>
-            alert("<%= messages %>");
-         </script>
-   <% } %>
 </html>

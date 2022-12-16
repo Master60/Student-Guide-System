@@ -15,28 +15,25 @@ router.get("/home", function (req, res) {
 });
 
 router.get("/login", isLoggedIn, function (req, res) {
-    console.log(res.locals.messages);
     res.render("Nuno Theme Starter Files/Login-Register.ejs");
 });
 
 router.post("/login", isLoggedIn, function (req, res) {
-    console.log(req.body);
     let hashed = mssql.query(process.env.CONNECTION_STRING, "SELECT password FROM Users WHERE username='"
         + req.body.username + "'", function (err, rows) {
-            if (err) {
-                console.log("err");
+            if (err || !rows[0]) {
                 req.flash("error", "Username or password is wrong");
                 res.redirect("/login");
             }
             else {
-                compare(req.body.password, rows[0].password, function(next) {
+                compare(req.body.password, rows[0].password, function (next) {
                     if (next) {
                         req.flash("success", "Welcome");
                         res.redirect("/login");  // To be Modified
                     }
                     else {
-                        console.log("err1");
                         req.flash("error", "Username or password is wrong");
+                        res.redirect("/login");
                     }
                 });
             }
