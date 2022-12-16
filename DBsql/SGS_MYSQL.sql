@@ -1,4 +1,4 @@
---DROP DATABASE Athletes; 
+/*DROP DATABASE Athletes; 
 --DROP DATABASE SGS; 
 
 --DROP DATABASE SGS
@@ -8,7 +8,7 @@
 1 -comment all table creation and create SGS DB first ,
 
 */
-USE [SGS]
+USE SGS;
 
 CREATE Table college(
 	CollegeID varchar(10) not null, 
@@ -23,20 +23,22 @@ CREATE TABLE USERS(
 	L_Name varchar(10) not null ,
 	PWD  varchar(50) not null, -- password 
 	UserType varchar(10) not null, 
-	CollegeID varchar(10), 
+	CollegeID varchar(10) not null, 
 	unique(LoginID) , 
 	PRIMARY KEY (LoginID),
-	Foreign key (CollegeID ) REFERENCES College
+	Foreign key (CollegeID) REFERENCES College(CollegeID)
 	ON UPDATE cascade
 	ON DELETE cascade
 	-- user posed article 
 	-- more 
 );
+
 CREATE Table ArticleType (
 		A_Type	varchar(20) not null, -- will insert possible values of A_type
 		unique(A_Type) , 
-		Primary key (A_Type), 
+		Primary key (A_Type)
 );
+
 CREATE TABLE Article (
 	ArticleID varchar(20) not null , 
 	A_Type	varchar(20) not null, -- i will create a table that refrence possible article type 
@@ -46,11 +48,11 @@ CREATE TABLE Article (
 	primary Key(ArticleID), 
 	Unique(ArticleID) ,
 	Unique(A_Timestamp), 
-	Foreign Key(A_Type) REFERENCES ArticleType , 
-	Foreign key (userID) REFERENCES USERS 
+	Foreign Key(A_Type) REFERENCES ArticleType(A_Type), 
+	Foreign key (userID) REFERENCES USERS(LoginID) 
 	ON DELETE SET null
 	ON UPDATE cascade, -- user posed article 
-	Foreign Key (ParentID) REFERENCES Article
+	Foreign Key (ParentID) REFERENCES Article(ArticleID)
 	ON DELETE cascade
 	ON UPDATE cascade
 );
@@ -64,10 +66,10 @@ CREATE TABLE PROGRAM(
 	unique(ProgramID), 
 	unique(P_Description), 
 	Primary key (ProgramID), 
-	FOREIGN KEY (P_Description) REFERENCES Article
+	FOREIGN KEY (P_Description) REFERENCES Article(ArticleID)
 	ON UPDATE cascade
 	ON DELETE set null,
-	FOREIGN KEY (CollegeID ) REFERENCES College 
+	FOREIGN KEY (CollegeID ) REFERENCES College(CollegeID)
 	ON DELETE cascade
 	ON UPDATE cascade
 	
@@ -81,10 +83,10 @@ CREATE TABLE STUDENTS (
 	programID varchar(20) , 
 	unique(LoginID) , 
 	Primary KEY(LoginID),
-	foreign Key(LoginID) References USERS 
+	foreign Key(LoginID) References USERS(LoginID)
 	ON DELETE cascade
 	ON UPDATE cascade,
-	foreign Key(programID) References PROGRAM
+	foreign Key(programID) References PROGRAM(ProgramID)
 	ON DELETE cascade
 	ON UPDATE cascade
 );
@@ -103,7 +105,7 @@ CREATE TABLE ADMINSTRATOR (
 	StartYear  SMALLINT , 
 	unique(LoginID) , 
 	Primary KEY(LoginID), 
-	Foreign Key(LoginID) REFERENCES USERS
+	Foreign Key(LoginID) REFERENCES USERS(LoginID)
 	ON UPDATE cascade
 	ON DELETE cascade
 ) ;
@@ -116,7 +118,7 @@ CREATE TABLE INSTRUCTOR(
 	OfficeDay varchar(10) ,
 	unique(LoginID), 
 	Primary KEY(LoginID) ,
-	Foreign Key(LoginID) REFERENCES USERS
+	Foreign Key(LoginID) REFERENCES USERS(LoginID)
 	ON UPDATE cascade
 	ON DELETE cascade
 );
@@ -124,12 +126,12 @@ CREATE TABLE ResearchesAndProjects(
 	ResearchID varchar(20) not null,
 	Title varchar(50) not null, 
 	ReleaseDate  Date not null, 
-	--R_Description varchar(20) not null ,
+	/*R_Description varchar(20) not null ,*/
 	unique(ResearchID ) , 
 	unique(Title) , 
-	--Unique(R_Description), 
-	primary Key(ResearchID) ,
-	--FOREIGN KEY (R_Description) REFERENCES Article
+	/*--Unique(R_Description), */
+	primary Key(ResearchID)
+	/*--FOREIGN KEY (R_Description) REFERENCES Article*/
 );
 CREATE TABLE Graduates(
 	LoginID varchar(10) not null default 0,
@@ -138,13 +140,13 @@ CREATE TABLE Graduates(
 	ProjectID varchar(20), 
  	unique(LoginID) , 
 	Primary KEY(LoginID), 
-	Foreign Key (LoginID) REFERENCES STUDENTS
+	Foreign Key (LoginID) REFERENCES STUDENTS(LoginID)
 	ON DELETE cascade
 	ON UPDATE cascade, 
-	Foreign Key (companyID) REFERENCES COMPANIES 
+	Foreign Key (companyID) REFERENCES COMPANIES(CompanyID)
 	ON DELETE set null
 	ON UPDATE cascade, -- Works_in; 
-	Foreign Key (ProjectID) REFERENCES ResearchesAndProjects
+	Foreign Key (ProjectID) REFERENCES ResearchesAndProjects(ResearchID)
 	ON DELETE set null -- meaningless
 	ON UPDATE cascade
 );
@@ -157,7 +159,7 @@ CREATE TABLE Courses (
 	C_Description varchar(20),
 	Course_Name varchar(50) not null , 
 	primary key(CourseID), 
-	Foreign Key (C_Description ) REFERENCES Article  -- course has article 
+	Foreign Key (C_Description ) REFERENCES Article(ArticleID)  -- course has article 
 	ON UPDATE cascade
 	ON DELETE set null -- meaningless as well
 );
@@ -175,11 +177,11 @@ CREATE TABLE E_LearningMaterial(
 	FileFormate varchar(20) ,
 	courseID varchar(20) ,
 	Primary Key (E_ID) ,
-	Foreign Key (E_Classification) references E_classification, 
-	Foreign key (InstructorID) references INSTRUCTOR 
+	Foreign Key (E_Classification) references E_classification(E_Class), 
+	Foreign key (InstructorID) references INSTRUCTOR(LoginID) 
 	ON UPDATE cascade
 	ON DELETE set null,-- instructor uploads elearning material 
-	Foreign Key (courseID) REFERENCES Courses 
+	Foreign Key (courseID) REFERENCES Courses(courseID) 
 	ON DELETE cascade
 	ON UPDATE cascade
 );
@@ -189,23 +191,23 @@ CREATE TABLE ContactingDetails (
 	ContactId varchar(50) not null, 
 	Contact nvarchar(20) not null,
 	ContactType varchar(20) not null, -- relation could be added 
-	Foreign Key (UserID) References Users
+	Foreign Key (UserID) References Users(LoginID)
 	ON DELETE cascade
 	ON UPDATE cascade,
 	primary key ( ContactID, UserID) ,
-	unique(contact) ,
+	unique(contact)
 );
 
 CREATE TABLE FOLLOWS ( -- students follows Company
 	StudentID varchar(10) not null,
 	CompanyID varchar(20) not null , 
 	primary Key (StudentID , companyID), 
-	Foreign  Key (StudentID) REFERENCES STUDENTS 
+	Foreign  Key (StudentID) REFERENCES STUDENTS(LoginID)
 	ON DELETE cascade
 	ON UPDATE cascade, 
-	FOREIGN KEY (CompanyID) REFERENCES COMPANIES 
+	FOREIGN KEY (CompanyID) REFERENCES COMPANIES(CompanyID)
 	ON DELETE cascade
-	ON UPDATE cascade, 
+	ON UPDATE cascade
 );
 
 CREATE TABLE G_MADE_RESEARCH ( -- GRADUATE MADE REASEARCH 
@@ -213,54 +215,68 @@ CREATE TABLE G_MADE_RESEARCH ( -- GRADUATE MADE REASEARCH
 	ResearchID varchar(20) not null , 
 	purpose varchar(100) , 
 	Primary Key (StudentID , ResearchID) , 
-	Foreign Key (StudentID) REFERENCES Graduates 
+	Foreign Key (StudentID) REFERENCES Graduates(LoginID)
 	ON UPDATE cascade
-	ON DELETE set default, 
-	Foreign Key (ResearchID) REFERENCES ResearchesAndProjects
+	ON DELETE NO ACTION, 
+	Foreign Key (ResearchID) REFERENCES ResearchesAndProjects(ResearchID)
 	ON UPDATE cascade
-	ON DELETE cascade, 
+	ON DELETE cascade
 );
+
+delimiter |
+CREATE TRIGGER SetDefaultGraduate
+BEFORE DELETE ON Graduates
+FOR EACH ROW
+BEGIN
+UPDATE G_MADE_RESEARCH SET StudentID = 0 WHERE StudentID = OLD.LoginID;
+END;
+
+|
+
+delimiter ;
 
 CREATE TABLE MANAGES ( -- INSTRUCTOR MANGES PROGRAM 
 	InstructorId varchar(10) not null default 0, 
 	ProgramID varchar(20) not null, 
 	Primary Key (InstructorId) , 
-	Foreign Key (InstructorId) REFERENCES Instructor 
+	Foreign Key (InstructorId) REFERENCES Instructor(LoginID)
 	ON UPDATE cascade, 
-	Foreign Key (ProgramID) REFERENCES PROGRAM
+	Foreign Key (ProgramID) REFERENCES PROGRAM(ProgramID)
 	ON UPDATE cascade
 	ON DELETE cascade
 );
-GO
 
+delimiter |
 CREATE TRIGGER FixDepManage
-	ON Instructor
-	AFTER DELETE
-	AS -- Need to Be tested
+	AFTER DELETE ON Instructor
+	FOR EACH ROW -- Need to Be tested
+    BEGIN
 	DELETE FROM MANAGES  WHERE InstructorId in 
 	(SELECT InstructorID FROM (Select ProgramID, COUNT(*) FROM MANAGES GROUP BY ProgramID HAVING COUNT(*) >= 2) 
-	AS TEMPO(ProgramID, c), MANAGES	WHERE TEMPO.ProgramID = MANAGES.ProgramID AND InstructorId in (SELECT InstructorId from deleted));
+	AS TEMPO(ProgramID, c), MANAGES	WHERE TEMPO.ProgramID = MANAGES.ProgramID AND InstructorId = OLD.InstructorID);
 
 	UPDATE MANAGES SET InstructorId = 0 WHERE InstructorId in 
 	(SELECT InstructorID FROM (Select ProgramID, COUNT(*) FROM MANAGES GROUP BY ProgramID HAVING COUNT(*) < 2) 
-	AS TEMPO(ProgramID, c), MANAGES	WHERE TEMPO.ProgramID = MANAGES.ProgramID AND InstructorId in (SELECT InstructorId from deleted));
-	GO
+	AS TEMPO(ProgramID, c), MANAGES	WHERE TEMPO.ProgramID = MANAGES.ProgramID AND InstructorId = OLD.InstructorID);
+    END;
+
+delimiter ;
+	
 
 CREATE TRIGGER DeleteRedundantDepManage
-	ON MANAGES
-	AFTER INSERT
-	AS -- Need to Be tested
-	DELETE FROM MANAGES WHERE InstructorId=0 AND ProgramID in (SELECT ProgramID from inserted);
-	GO
+	AFTER INSERT ON MANAGES
+    FOR EACH ROW
+	-- Need to Be tested
+	DELETE FROM MANAGES WHERE InstructorId=0 AND ProgramID = NEW.ProgramID;
 
 CREATE TABLE TEACHES (
 	InstructorId varchar(10) not null, 
 	CourseID varchar (20) not null , 
 	Primary Key (InstructorId , CourseID) ,
-	Foreign Key (InstructorId) REFERENCES Instructor 
+	Foreign Key (InstructorId) REFERENCES Instructor(LoginID)
 	ON DELETE cascade
 	ON UPDATE cascade, 
-	Foreign Key (CourseID ) REFERENCES Courses
+	Foreign Key (CourseID ) REFERENCES Courses(courseID)
 	ON DELETE cascade
 	ON UPDATE cascade
 
@@ -269,12 +285,12 @@ CREATE TABLE REQUIRES (
 	Courseid varchar(20) not null, 
 	courseid2 varchar(20) not null , 
 	primary key(Courseid , Courseid2),
-	Foreign Key (Courseid) REFERENCES Courses
+	Foreign Key (Courseid) REFERENCES Courses(courseID)
 	ON UPDATE cascade
 	ON DELETE cascade, -- Trigger for deleting course
-	Foreign Key (Courseid2) REFERENCES Courses
+	Foreign Key (Courseid2) REFERENCES Courses(CourseID)
 	ON DELETE cascade
-	ON UPDATE cascade,
+	ON UPDATE cascade
 
 );
 
@@ -282,88 +298,98 @@ CREATE TABLE IsTakenBy(  -- course is taken by program
 	CourseID varchar (20) not null , 
 	ProgramID varchar(20) not null, 
 	Primary Key(CourseID, ProgramID), 
-	Foreign Key (ProgramID) REFERENCES PROGRAM 
+	Foreign Key (ProgramID) REFERENCES PROGRAM(ProgramID) 
 	ON UPDATE cascade
 	ON DELETE cascade,
-	Foreign Key (CourseID ) REFERENCES Courses
+	Foreign Key (CourseID ) REFERENCES Courses(courseID)
 	ON UPDATE cascade
 	ON DELETE cascade
 );
-GO
 
+delimiter |
 CREATE TRIGGER DELETECourses
-	ON Program AFTER DELETE
-	AS
+	AFTER DELETE ON Program 
+    FOR EACH ROW
+    BEGIN
 	-- Need to be tested
 	DELETE from Courses WHERE CourseID in (SELECT CourseID FROM 
 	(SELECT CourseID, COUNT(*) FROM IsTakenBy GROUP BY CourseID HAVING COUNT(*) < 2) 
-	AS TEMPO(CourseID, c), IsTakenBy WHERE TEMPO.CourseID = IsTakenBy.CourseID AND ProgramID in (SELECT ProgramID from deleted));
+	AS TEMPO(CourseID, c), IsTakenBy WHERE TEMPO.CourseID = IsTakenBy.CourseID AND ProgramID = OLD.ProgramID);
+    END;
+|
+delimiter ;
 
-	--DELETE From PROGRAM WHERE ProgramID in (SELECT ProgramID from deleted);
-	GO
+	/*--DELETE From PROGRAM WHERE ProgramID in (SELECT ProgramID from deleted);*/
 
 CREATE TABLE S_TAKES_C ( -- student takes course 
 	CourseID varchar (20) not null , 
 	StudentID varchar(10) not null , 
 	primary Key (CourseID , StudentID) , 
-	Foreign Key (CourseID ) REFERENCES Courses
+	Foreign Key (CourseID ) REFERENCES Courses(courseID)
 	ON DELETE cascade
 	ON UPDATE cascade,
-	Foreign Key (StudentID) REFERENCES STUDENTS 
+	Foreign Key (StudentID) REFERENCES STUDENTS(LoginID)
 	ON DELETE cascade
-	ON UPDATE cascade, 
+	ON UPDATE cascade
 );
 CREATE TABLE A_About_Company(
 	CompanyID varchar(20) not null default 0, 
 	ArticleID varchar(20) not null , 
 	Primary key (CompanyID, ArticleID) , 
-	Foreign Key(CompanyID) REFERENCES COMPANIES 
+	Foreign Key(CompanyID) REFERENCES COMPANIES(CompanyID)
 	ON UPDATE cascade
-	ON DELETE set default, 
-	Foreign Key (ArticleID) REFERENCES Article 
+	ON DELETE NO ACTION, 
+	Foreign Key (ArticleID) REFERENCES Article(ArticleID)
 	ON UPDATE cascade
-	ON DELETE cascade, 
+	ON DELETE cascade
 );
+
+delimiter |
+CREATE TRIGGER setDefaultArticle
+BEFORE DELETE ON Companies
+FOR EACH ROW
+BEGIN
+UPDATE A_About_Company SET CompanyID = 0 WHERE CompanyID = OLD.CompanyID;
+
+END;
+
+|
+
+delimiter ;
+
 CREATE TABLE A_About_course(
 	CourseID varchar (20) not null , 
 	ArticleID varchar(20) not null , 
 	Primary key (CourseID , ArticleID) , 
-	Foreign Key (CourseID ) REFERENCES Courses
+	Foreign Key (CourseID ) REFERENCES Courses(courseID)
 	ON UPDATE cascade
 	ON DELETE cascade,
-	Foreign Key (ArticleID) REFERENCES Article 
+	Foreign Key (ArticleID) REFERENCES Article(ArticleID)
 	ON UPDATE cascade
-	ON DELETE cascade, 
+	ON DELETE cascade
 );
-GO
 
-CREATE TRIGGER DeleteArticles
-	ON Courses
-	AFTER DELETE
-	AS
+/*CREATE TRIGGER DeleteArticles
+	AFTER DELETE ON Courses
+	FOR EACH ROW
 	DELETE FROM Article WHERE ArticleID in 
-	(SELECT ArticleID FROM A_About_course WHERE CourseID in (SELECT CourseID from deleted));
+	(SELECT ArticleID FROM A_About_course WHERE CourseID in (SELECT CourseID from deleted));*/
 
-	GO
 
 CREATE TABLE A_About_program(
 	ArticleID varchar(20) not null , 
 	ProgramID varchar(20) not null, 
 	primary KEy(ArticleID , ProgramID), 
-	Foreign Key (ProgramID) REFERENCES PROGRAM 
+	Foreign Key (ProgramID) REFERENCES PROGRAM(ProgramID)
 	ON UPDATE cascade
 	ON DELETE cascade, 
-	Foreign Key (ArticleID) REFERENCES Article 
+	Foreign Key (ArticleID) REFERENCES Article(ArticleID)
 	ON UPDATE cascade
-	ON DELETE cascade, 
+	ON DELETE cascade
 );
-GO
 
 CREATE TRIGGER DeleteArticles
-	ON Program
-	AFTER DELETE
-	AS
+	AFTER DELETE ON Program
+	FOR EACH ROW
 	DELETE FROM Article WHERE ArticleID in 
-	(SELECT ArticleID FROM A_About_program WHERE ProgramID in (SELECT ProgramID from deleted));
-
-	GO
+	(SELECT ArticleID FROM A_About_program WHERE ProgramID = OLD.ProgramID);
