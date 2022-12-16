@@ -126,11 +126,15 @@ CREATE TABLE ResearchesAndProjects(
 	ResearchID varchar(20) not null,
 	Title varchar(50) not null, 
 	ReleaseDate  Date not null, 
+    ProjectIntro varchar(20),
 	/*R_Description varchar(20) not null ,*/
 	unique(ResearchID ) , 
 	unique(Title) , 
 	/*--Unique(R_Description), */
-	primary Key(ResearchID)
+	primary Key(ResearchID),
+    foreign key(ProjectIntro) references Article(ArticleID)
+    ON delete set null
+    on update cascade
 	/*--FOREIGN KEY (R_Description) REFERENCES Article*/
 );
 CREATE TABLE Graduates(
