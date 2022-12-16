@@ -5,7 +5,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box}
 
 /* Full-width input fields */
-input[type=text], input[type=password], input[type=mobile_no], input[type=Gradproject], input[type=Works_for],input[type=R-password]   {
+input[type=text], input[type=email], input[type=password], input[type=tel]   {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -14,19 +14,31 @@ input[type=text], input[type=password], input[type=mobile_no], input[type=Gradpr
   background: #f1f1f1;
 }
 
-input[type=text]:focus, input[type=password]:focus, input[type=mobile_no]:focus, input[type=Gradproject]:focus, input[type=Works_for]:focus {
+input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, input[type=tel]:focus {
   background-color: #ddd;
   outline: none;
 }
+
+input[type=email] {
+  margin-bottom: 0rem;
+}
+
 input[type=text]{
-margin-bottom: 0rem;
+margin-bottom: 1.7rem;
 }
-input[type=R-password]{
-margin-bottom: 0rem;
+
+input[name=Gradproject]{
+margin-bottom: 1.7rem;
 }
+
 input[type=password]{
 margin-bottom: 1.7rem;
 }
+
+input[name=psw-repeat]{
+margin-bottom: 0rem;
+}
+
 .msg p{
 font-size: 0.8rem;
 color: #FF0000;
@@ -106,7 +118,7 @@ button:hover {
     <hr>
 
     <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
+    <input type="email" placeholder="Enter Email" name="email" required>
     <div class="msg"> <p>Email already exists</p> </div>
 
 
@@ -118,8 +130,8 @@ button:hover {
     <div class="msg"> <p>Password mismatch</p> </div>
 
      <label for="College"><b>College</b></label>
-     <select name="College" id="College">
-     <option value="null" selected disabled hidden> </option>
+     <select name="College" id="College" required>
+     <option value="" selected disabled hidden> </option>
      <option value="student"> Student</option>
      <option value="Instructor">Instructor</option>
      <option value="adminstration">Adminstration</option>
@@ -128,8 +140,8 @@ button:hover {
 
 
     <label for="Program"><b>Program</b></label>
-    <select name="Program" id="Program">
-    <option value="null" selected disabled hidden> </option>
+    <select name="Program" id="Program" required>
+    <option value="" selected disabled hidden> </option>
     <option value="student"> Student</option>
     <option value="Instructor">Instructor</option>
     <option value="adminstration">Adminstration</option>
@@ -137,8 +149,8 @@ button:hover {
     </select>
 
     <label for="Gradyear"><b>Graduation Year</b></label>
-    <select name="Gradyear" id="Gradyear">
-    <option value="null" selected disabled hidden> </option>
+    <select name="Gradyear" id="Gradyear" required>
+    <option value="" selected disabled hidden> </option>
     <option value="student"> Student</option>
     <option value="Instructor">Instructor</option>
     <option value="adminstration">Adminstration</option>
@@ -148,15 +160,15 @@ button:hover {
     <br/>
 
     <label for="mobile_no"><b>Mobile Number</b></label>
-    <input type="mobile_no" placeholder="Mobile Number" name="mobile_no" required>
+    <input type="tel" pattern="01[0, 1, 2, 5][0-9]{8}" placeholder="Mobile Number" name="mobile_no" required>
 
 
     <label for="Gradproject"><b>Graduation Project</b></label>
-    <input type="Gradproject" placeholder="Graduation Project" name="Gradproject" required>
+    <input type="text" placeholder="Graduation Project" name="Gradproject" required>
 
 
-    <label for="Works_for"><b>Works For</b></label>
-    <input type="Works_for" placeholder="Works For" name="Works_for" required>
+    <label for="Works_for"><b>Workplace</b></label>
+    <input type="text" placeholder="Company (Optional)" name="Works_for">
     <br/>
 
 
