@@ -1,0 +1,43 @@
+
+
+insert into college
+values
+('1' ,'Faculty of engineering','Giza'),
+('2','Faculty  of medicine','Giza')
+
+insert into USERS
+values
+('1200100','Malek','Essam','MalekEls@ka','Student','1200100','1'),
+('1200200','Mina','Ashraf','MinaAshr@f','Student','1200200','1'),
+('1200300','Bassel','Mohamed','BasselMoh@mmd','Student','1200300','1'),
+('1200400','Mohamed','Heggi', 'Moh@medHeggi','Student','1200400','2')
+
+insert into STUDENTS
+values
+('1200100',75 ,3.6 ,2020 ,3 ,'HEM22'),
+('1200200',78 ,3.8 ,2022 ,2 ,'CCE11'),
+('1200300',72 ,3.6 ,2018 ,5 ,'MEE33'),
+('1200400',80 ,3.7 ,2021 ,1 ,'CCE11')
+
+
+insert into PROGRAM
+values
+('HEM22','Biomedical Engineering' ,'HEM', 'Art007', '2'),
+('CCE11','Computer And Communication Engineering' ,'CCE', 'Art092', '1' ),
+('MEE33','Mechatronics Engineering' ,'MEE', 'Art023', '1')
+
+insert into ArticleType
+values
+('ArticleType1'),
+('ArticleType2')
+
+insert into Article
+values
+('Art007', 'ArticleType1', 2022-10-22 22:12:11,'1200100', null),
+('Art092', 'ArticleType1', 2021-01-12 21:02:21, '1200200', null),
+('Art023', 'ArticleType2', 2018-07-01 22:22:11, '1200400', null),
+('Art002', 'ArticleType1', 2019-9-22 11:03:11, '1200300', null),
+('Art072', 'ArticleType1', 2021-01-12 08:02:01, '1200200', 'Art007'),
+('Art063', 'ArticleType2', 2020-04-21 22:12:32, '1200300', 'Art023'),
+('Art054', 'ArticleType1', 2017-03-11 03:19:10, '1200200', 'Art002'),
+('Art039', 'ArticleType2', 2020-12-01 20:18:19, '1200200', 'Art092')
