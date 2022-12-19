@@ -165,6 +165,7 @@ CREATE TABLE Courses (
 	C_Description varchar(20),
 	Course_Name varchar(50) not null , 
 	imageReference	varchar(20),
+	AvailabilitySemester varchar(10),
 	primary key(CourseID), 
 	Foreign Key (C_Description ) REFERENCES Article(ArticleID)  -- course has article 
 	ON UPDATE cascade
