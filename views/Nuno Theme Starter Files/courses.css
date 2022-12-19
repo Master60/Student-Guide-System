@@ -40,11 +40,11 @@ body {
 }
 
 .caption {
-    width: 70%;
+    width: 75%;
     max-width: 100%;
     position: absolute;
     top: 20%;
-    margin-left: 15%;
+    margin-left: 12.5%;
     z-index: 1;
     color: white;
     text-transform: uppercase;
@@ -80,6 +80,13 @@ body {
     z-index: -1000;
 }
 
+svg.svg-inline--fa {
+    color: #FFD700;
+    margin-bottom: 3rem;
+}
+
 .p-2 {
-    background: rgb(0, 179, 255);
+    background: rgba(0, 21, 255, 0.228);
+    width: 27.5rem;
+    margin: 1rem;
 }
