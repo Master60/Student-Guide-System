@@ -80,6 +80,14 @@ body {
     z-index: -1000;
 }
 
+.input-group {
+    margin-top: 3rem;
+}
+
+a h5:hover {
+    color: #FFD700;
+}
+
 svg.svg-inline--fa {
     color: #FFD700;
     margin-bottom: 3rem;
