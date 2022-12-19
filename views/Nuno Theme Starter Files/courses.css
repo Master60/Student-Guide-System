@@ -43,8 +43,8 @@ body {
     width: 75%;
     max-width: 100%;
     position: absolute;
-    top: 20%;
-    margin-left: 12.5%;
+    top: 30%;
+    margin-left: 13%;
     z-index: 1;
     color: white;
     text-transform: uppercase;
@@ -99,6 +99,6 @@ svg.svg-inline--fa {
 
 .p-2 {
     background: rgba(0, 21, 255, 0.228);
-    width: 18rem;
+    width: 17.5rem;
     margin: 1rem;
 }
