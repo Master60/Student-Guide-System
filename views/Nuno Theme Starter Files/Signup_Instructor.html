@@ -23,7 +23,7 @@ margin-bottom: 1.7rem;
 }
 
 input[name=psw-repeat]{
-margin-bottom: 0rem;
+margin-bottom: 1.2rem;
 }
 
 .msg p{
@@ -113,11 +113,38 @@ button:hover {
     <div class="msg"> <p>Email already exists</p> </div>
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="pass" placeholder="Enter Password" name="psw" oninvalid="this.setCustomValidity('your password must contain at least one number, one uppercase letter and 8 characters')" oninput="this.setCustomValidity('')" required>
+
 
     <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-    <div class="msg"> <p>Password mismatch</p> </div>
+    <input type="password" placeholder="Repeat Password" id="R-pass" name="psw-repeat" required>
+
+
+        <script>
+
+        var password = document.getElementById("pass"), confirm_password = document.getElementById("R-pass");
+        var counter=0;
+
+
+        function validatePassword()
+        {
+          if(password.value != confirm_password.value)
+          {
+            confirm_password.setCustomValidity("Passwords mismatch");
+          } else {
+            confirm_password.setCustomValidity('');
+          }
+        }
+
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+
+        </script>
+
+
+
+
+
 
      <label for="College"><b>College</b></label>
      <select name="College" id="College"  >   <!-- need to  be able to select multiple vals by Jscript, as an instructor can work at many colleges-->
@@ -150,7 +177,7 @@ button:hover {
     <br/>
 
     <label for="mobile_no"><b>Mobile Number</b></label>
-    <input type="tel" pattern="01[0, 1, 2, 5][0-9]{8}" placeholder="Mobile Number" name="mobile_no" required>
+    <input type="tel" pattern="01[0, 1, 2, 5][0-9]{8}"  oninvalid="this.setCustomValidity('Enter a valid mobile number')" oninput="this.setCustomValidity('')" placeholder="Mobile Number" name="mobile_no" required>
 
 
 
