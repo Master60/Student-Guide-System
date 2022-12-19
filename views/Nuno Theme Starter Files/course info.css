@@ -40,11 +40,10 @@ body {
 }
 
 .caption {
-    width: 75%;
+    width: 100%;
     max-width: 100%;
     position: absolute;
-    top: 20%;
-    margin-left: 12.5%;
+    top: 38%;
     z-index: 1;
     color: white;
     text-transform: uppercase;
@@ -78,27 +77,4 @@ body {
     width: 100%;
     height: 100vh;
     z-index: -1000;
-}
-
-.input-group {
-    margin-top: 3rem;
-}
-
-a h5:hover {
-    color: #FFD700;
-}
-
-svg.svg-inline--fa {
-    color: #FFD700;
-    margin-bottom: 3rem;
-}
-
-.d-flex {
-    justify-content: center;
-}
-
-.p-2 {
-    background: rgba(0, 21, 255, 0.228);
-    width: 18rem;
-    margin: 1rem;
 }
