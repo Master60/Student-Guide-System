@@ -161,6 +161,7 @@ CREATE TABLE Graduates(
 CREATE TABLE Courses (
 	CourseID varchar(20) not null, 
 	credits SMALLINT not null , 
+	Prefix varchar(10),
 	C_Description varchar(20),
 	Course_Name varchar(50) not null , 
 	primary key(CourseID), 
