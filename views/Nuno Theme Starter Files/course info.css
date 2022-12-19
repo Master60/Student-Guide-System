@@ -78,3 +78,7 @@ body {
     height: 100vh;
     z-index: -1000;
 }
+
+.table {
+    width:65%;
+}
