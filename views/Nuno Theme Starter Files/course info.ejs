@@ -72,40 +72,44 @@
             <label>CCE</label>
             <br>
             <label>Availability Semester:</label>
-            <label>Always</label>                  <!-- Print More data. Organize. Use server Power in Script. Encode URL  -->
+            <%  if( Semester.length > 0) { %>
+            <label>
+                <% for(let i =0 ;i < Semester.length-1  ; i++) { %>
+                    <%= Semester[i].SemesterName %>,
+                <% }; %>                
+                <%= Semester[Semester.length-1].SemesterName %>
+            </label>                  <!-- Print More data. Organize. Use server Power in Script. Encode URL  -->
+            <% } else { %>            
+                <lable> No Info  </lable>                            
+            <% } %>       
             <br>
             <p>
                 <%= course.ArticleText %>
             </p>
-            <table class="table table-hover table-dark">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
-                </tbody>
-            </table>
+            <%  if(InstructorName.length > 0 ){ %>.
+                <table class="table table-hover table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%  if( InstructorName.length > 0) { %>     
+                            <% for(let i =0 ;i < InstructorName.length  ; i++) { %>                        
+                                <tr>
+                                    <th scope="row"> <%= i+1 %> </th>
+                                    <td><%= InstructorName[i].F_Name %></td>
+                                    <td> <%= InstructorName[i].L_Name %></td>
+                                </tr>
+                            <% }; %> 
+                        <% } else { %>            
+                            <lable> No Info  </lable>                            
+                        <% } %>                                        
+                    </tbody>
+                </table>
+            <% }; %>
         </div>
         <!--- End Landing Page Section-->
 

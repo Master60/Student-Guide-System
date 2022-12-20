@@ -8,7 +8,7 @@
 1 -comment all table creation and create SGS DB first ,
 
 */
-USE SGS;
+USE sgs;
 
 CREATE Table college(
 	CollegeID varchar(10) not null, 

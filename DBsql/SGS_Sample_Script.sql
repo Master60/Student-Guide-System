@@ -58,3 +58,25 @@ INSERT INTO `sgs`.`c_in_semester` (`CourseID`, `SemesterName`) VALUES ('2', 'Spr
 INSERT INTO `sgs`.`c_in_semester` (`CourseID`, `SemesterName`) VALUES ('3', 'Fall');
 INSERT INTO `sgs`.`c_in_semester` (`CourseID`, `SemesterName`) VALUES ('3', 'Spring');
 INSERT INTO `sgs`.`c_in_semester` (`CourseID`, `SemesterName`) VALUES ('3', 'Summer');
+
+UPDATE `sgs`.`courses` SET `C_Description` = 'Art002' WHERE (`CourseID` = '1');
+UPDATE `sgs`.`courses` SET `C_Description` = 'Art007' WHERE (`CourseID` = '2');
+UPDATE `sgs`.`courses` SET `C_Description` = 'Art023' WHERE (`CourseID` = '3');
+UPDATE `sgs`.`courses` SET `C_Description` = 'Art039' WHERE (`CourseID` = '4');
+
+INSERT INTO `sgs`.`users` (`LoginID`, `F_Name`, `L_Name`, `PWD`, `UserType`, `CollegeID`) VALUES ('1300100', 'Mohamed', 'Refqy', 'refqy@gmail', 'Instructor', '1');
+INSERT INTO `sgs`.`users` (`LoginID`, `F_Name`, `L_Name`, `PWD`, `UserType`, `CollegeID`) VALUES ('1300200', 'lydia', 'waheed', 'lydia@waheed', 'Instructor', '1');
+INSERT INTO `sgs`.`users` (`LoginID`, `F_Name`, `L_Name`, `PWD`, `UserType`, `CollegeID`) VALUES ('1300300', 'Osama', 'Nasser', 'Osama@Nasser', 'Instructor', '1');
+INSERT INTO `sgs`.`users` (`LoginID`, `F_Name`, `L_Name`, `PWD`, `UserType`, `CollegeID`) VALUES ('1300400', 'Khalid', 'elsoradi', 'khalid@elsoradi', 'Instructor', '1');
+
+INSERT INTO `sgs`.`instructor` (`LoginID`, `OfficeLocation`, `StartYear`, `OfficeHours`, `OfficeDay`) VALUES ('1300100', '20520', '2001', '2', 'thurs');
+INSERT INTO `sgs`.`instructor` (`LoginID`, `OfficeLocation`, `StartYear`, `OfficeHours`, `OfficeDay`) VALUES ('1300200', '20521', '2002', '3', 'wed');
+INSERT INTO `sgs`.`instructor` (`LoginID`, `OfficeLocation`, `StartYear`, `OfficeHours`, `OfficeDay`) VALUES ('1300300', '20523', '2003', '2', 'wed');
+INSERT INTO `sgs`.`instructor` (`LoginID`, `OfficeLocation`, `StartYear`, `OfficeHours`, `OfficeDay`) VALUES ('1300400', '20524', '2004', '2', 'wed');
+
+INSERT INTO `sgs`.`teaches` (`InstructorId`, `CourseID`) VALUES ('1300100', '1');
+INSERT INTO `sgs`.`teaches` (`InstructorId`, `CourseID`) VALUES ('1300200', '2');
+INSERT INTO `sgs`.`teaches` (`InstructorId`, `CourseID`) VALUES ('1300400', '3');
+INSERT INTO `sgs`.`teaches` (`InstructorId`, `CourseID`) VALUES ('1300300', '4');
+
+UPDATE `sgs`.`courses` SET `C_Description` = 'Art039' WHERE (`CourseID` = '5');

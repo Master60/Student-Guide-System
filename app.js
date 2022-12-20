@@ -25,11 +25,11 @@ app.use(expressSession({
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "SQLserverBYmina_2022",
-    database: "SGS"
+    password: "iNtratel@2013lol",
+    database: "sgs"
 });
 
-app.use(function(req, res, next) { // Locals
+app.use(function (req, res, next) { // Locals
     res.locals.messages = req.flash("success");
     res.locals.errors = req.flash("error");
     next();
@@ -40,9 +40,9 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(UserRoute);
-app.get("/courses", function(req, res, next) {
-    con.connect(function(err) {
-        con.query("SELECT * From courses", function(err, result){
+app.get("/courses", function (req, res, next) {
+    con.connect(function (err) {
+        con.query("SELECT * From courses", function (err, result) {
             res.render("Nuno Theme Starter Files/courses.ejs", {
                 courses: result
             });
@@ -50,14 +50,20 @@ app.get("/courses", function(req, res, next) {
     })
 });
 
-app.get("/courseinfo/:course", function(req, res, next) {
-    con.connect(function(err) {
-        con.query("SELECT * From courses, Article, Users, College WHERE CourseID='" + req.params.course + 
-        "' AND C_Description=ArticleID AND LoginID = userID AND Users.CollegeID = College.CollegeID", function(err, result){
-            res.render("Nuno Theme Starter Files/course info.ejs", {
-                course: result[0]
+app.get("/courseinfo/:course", function (req, res, next) {
+    con.connect(function (err) {
+        con.query("SELECT * From courses, Article, Users, College WHERE CourseID='" + req.params.course +
+            "' AND C_Description=ArticleID AND LoginID = userID AND Users.CollegeID = College.CollegeID", function (err, result) {
+                con.query("select SemesterName from c_in_semester where c_in_semester.CourseID =" + req.params.course + ";", function (err, Semesters) {
+                    con.query("select F_Name , L_Name from Users , teaches where teaches.CourseID  = '"+ req.params.course + "' AND teaches.InstructorID = Users.loginID;", function (err, Names) {
+                        res.render("Nuno Theme Starter Files/course info.ejs", {
+                            course: result[0],
+                            Semester: Semesters,
+                            InstructorName :Names
+                        });
+                    });
+                });
             });
-        });
     });
 });
 
