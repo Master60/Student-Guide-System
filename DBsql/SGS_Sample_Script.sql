@@ -40,3 +40,21 @@ values
 ('Art063', 'ArticleType2', '2020-04-21 22:12:32', '1200300', 'Art023', 'The words “yes” and “no” get used in comparison to each other so often that it feels like they carry equal weight in conversation. In reality, they are not just opposite in meaning, but of entirely different magnitudes in commitment.'),
 ('Art054', 'ArticleType1', '2017-03-11 03:19:10', '1200200', 'Art002', 'I like how the economist Tim Harford put it, “Every time we say yes to a request, we are also saying no to anything else we might accomplish with the time.” Once you have committed to something, you have already decided how that future block of time will be spent.'),
 ('Art039', 'ArticleType2', '2020-12-01 20:18:19', '1200200', 'Art092', 'Saying no is sometimes seen as a luxury that only those in power can afford. And it is true: turning down opportunities is easier when you can fall back on the safety net provided by power, money, and authority. But it is also true that saying no is not merely a privilege reserved for the successful among us. It is also a strategy that can help you become successful.');
+
+INSERT INTO `sgs`.`semester` (`SemesterName`) VALUES ('Fall');
+INSERT INTO `sgs`.`semester` (`SemesterName`) VALUES ('Spring');
+INSERT INTO `sgs`.`semester` (`SemesterName`) VALUES ('Summer');
+
+INSERT INTO `sgs`.`courses` (`CourseID`, `credits`, `Prefix`, `Course_Name`) VALUES ('1', '3', 'ELCN112', 'Circuits-2');
+INSERT INTO `sgs`.`courses` (`CourseID`, `credits`, `Prefix`, `Course_Name`) VALUES ('2', '3', 'ELCN101', 'Electronics');
+INSERT INTO `sgs`.`courses` (`CourseID`, `credits`, `Prefix`, `Course_Name`) VALUES ('3', '2', 'GENN201', 'Risk Managment and Environment');
+INSERT INTO `sgs`.`courses` (`CourseID`, `credits`, `Prefix`, `Course_Name`) VALUES ('4', '3', 'CMPN201', 'Microprocessor Systems - 1');
+INSERT INTO `sgs`.`courses` (`CourseID`, `credits`, `Prefix`, `Course_Name`) VALUES ('5', '3', 'CMPN202', 'Introduction to Database Systems');
+
+INSERT INTO `sgs`.`c_in_semester` (`CourseID`, `SemesterName`) VALUES ('1', 'Fall');
+INSERT INTO `sgs`.`c_in_semester` (`CourseID`, `SemesterName`) VALUES ('1', 'Spring');
+INSERT INTO `sgs`.`c_in_semester` (`CourseID`, `SemesterName`) VALUES ('2', 'Fall');
+INSERT INTO `sgs`.`c_in_semester` (`CourseID`, `SemesterName`) VALUES ('2', 'Spring');
+INSERT INTO `sgs`.`c_in_semester` (`CourseID`, `SemesterName`) VALUES ('3', 'Fall');
+INSERT INTO `sgs`.`c_in_semester` (`CourseID`, `SemesterName`) VALUES ('3', 'Spring');
+INSERT INTO `sgs`.`c_in_semester` (`CourseID`, `SemesterName`) VALUES ('3', 'Summer');
