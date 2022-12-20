@@ -29,7 +29,7 @@ var con = mysql.createConnection({
     database: "SGS"
 });
 
-app.use(function(req, res, next) { // Locals
+app.use(function (req, res, next) { // Locals
     res.locals.messages = req.flash("success");
     res.locals.errors = req.flash("error");
     next();
@@ -40,9 +40,9 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(UserRoute);
-app.get("/courses", function(req, res, next) {
-    con.connect(function(err) {
-        con.query("SELECT * From courses", function(err, result){
+app.get("/courses", function (req, res, next) {
+    con.connect(function (err) {
+        con.query("SELECT * From courses", function (err, result) {
             res.render("Nuno Theme Starter Files/courses.ejs", {
                 courses: result
             });
@@ -50,14 +50,14 @@ app.get("/courses", function(req, res, next) {
     })
 });
 
-app.get("/courseinfo/:course", function(req, res, next) {
-    con.connect(function(err) {
-        con.query("SELECT * From courses, Article, Users, College WHERE CourseID='" + req.params.course + 
-        "' AND C_Description=ArticleID AND LoginID = userID AND Users.CollegeID = College.CollegeID", function(err, result){
-            res.render("Nuno Theme Starter Files/course info.ejs", {
-                course: result[0]
+app.get("/courseinfo/:course", function (req, res, next) {
+    con.connect(function (err) {
+        con.query("SELECT * From courses, Article, Users, College WHERE CourseID='" + req.params.course +
+            "' AND C_Description=ArticleID AND LoginID = userID AND Users.CollegeID = College.CollegeID", function (err, result) {
+                res.render("Nuno Theme Starter Files/course info.ejs", {
+                    course: result[0]
+                });
             });
-        });
     });
 });
 
@@ -69,4 +69,18 @@ app.set("views", path.join(__dirname, "views"));
 
 http.listen(2305, function () {
     console.log("Server has started on port 2305".toUpperCase());
+    io.on("connection", function(socket) {
+        socket.on("searchOfcourses", function (course) {
+            if (course) {
+                con.query("SELECT * FROM courses WHERE Course_Name LIKE '%" + course + "%'", function (err, result) {
+                    socket.emit("coursesSearched", result);
+                });
+            }
+            else {
+                con.query("SELECT * FROM courses", function (err, result) {
+                    socket.emit("coursesSearched", result);
+                });
+            }
+        });
+    });
 });
