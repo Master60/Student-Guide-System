@@ -11,6 +11,7 @@ var express = require("express"),
     //refe = "",
     //rout = "",
     flash = require("connect-flash"),
+    mysql = require("mysql"),
     UserRoute = require("./routes/user.js");
 
 app.use(flash());
@@ -20,6 +21,13 @@ app.use(expressSession({
     resave: false,
     saveUninitialized: false
 }));
+
+var con = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "SQLserverBYmina_2022",
+    database: "SGS"
+});
 
 app.use(function(req, res, next) { // Locals
     res.locals.messages = req.flash("success");
@@ -32,6 +40,26 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(UserRoute);
+app.get("/courses", function(req, res, next) {
+    con.connect(function(err) {
+        con.query("SELECT * From courses", function(err, result){
+            res.render("Nuno Theme Starter Files/courses.ejs", {
+                courses: result
+            });
+        });
+    })
+});
+
+app.get("/courseinfo/:course", function(req, res, next) {
+    con.connect(function(err) {
+        con.query("SELECT * From courses, Article, Users, College WHERE CourseID='" + req.params.course + 
+        "' AND C_Description=ArticleID AND LoginID = userID AND Users.CollegeID = College.CollegeID", function(err, result){
+            res.render("Nuno Theme Starter Files/course info.ejs", {
+                course: result[0]
+            });
+        });
+    });
+});
 
 app.use(express.static("assets"));
 

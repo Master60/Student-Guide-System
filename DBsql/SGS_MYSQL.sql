@@ -45,6 +45,7 @@ CREATE TABLE Article (
 	A_Timestamp Timestamp not null, 
 	userID varchar(10) , 
 	ParentID  varchar(20), 
+	ArticleText	Text not null,
 	primary Key(ArticleID), 
 	Unique(ArticleID) ,
 	Unique(A_Timestamp), 
@@ -161,15 +162,27 @@ CREATE TABLE Graduates(
 CREATE TABLE Courses (
 	CourseID varchar(20) not null, 
 	credits SMALLINT not null , 
-	Prefix varchar(10),
+	Prefix varchar(10) not null,
 	C_Description varchar(20),
 	Course_Name varchar(50) not null , 
 	imageReference	varchar(20),
-	AvailabilitySemester varchar(10),
 	primary key(CourseID), 
 	Foreign Key (C_Description ) REFERENCES Article(ArticleID)  -- course has article 
 	ON UPDATE cascade
 	ON DELETE set null -- meaningless as well
+);
+
+CREATE TABLE Semester (
+	SemesterName varchar(10),
+    Primary key (SemesterName)
+);
+
+CREATE TABLE C_IN_SEMESTER (
+	CourseID varchar(20) not null,
+    SemesterName varchar(10) not null,
+    Primary Key (CourseID, SemesterName),
+    Foreign Key (CourseID) REFERENCES Courses(CourseID),
+    Foreign Key (SemesterName) REFERENCES Semester(SemesterName)
 );
 
 CREATE TABLE E_Classification(
