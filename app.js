@@ -29,7 +29,7 @@ var con = mysql.createConnection({
     database: "sgs"
 });
 
-app.use(function (req, res, next) { // Locals
+app.use(function(req, res, next) { // Locals
     res.locals.messages = req.flash("success");
     res.locals.errors = req.flash("error");
     next();
@@ -75,4 +75,18 @@ app.set("views", path.join(__dirname, "views"));
 
 http.listen(2305, function () {
     console.log("Server has started on port 2305".toUpperCase());
+    io.on("connection", function(socket) {
+        socket.on("searchOfcourses", function (course) {
+            if (course) {
+                con.query("SELECT * FROM courses WHERE Course_Name LIKE '%" + course + "%'", function (err, result) {
+                    socket.emit("coursesSearched", result);
+                });
+            }
+            else {
+                con.query("SELECT * FROM courses", function (err, result) {
+                    socket.emit("coursesSearched", result);
+                });
+            }
+        });
+    });
 });
