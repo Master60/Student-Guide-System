@@ -61,25 +61,31 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Courses</span>
                 </div>
-                <input type="text" class="form-control" id="searchInput" placeholder="Enter a course name" aria-label="Username"
-                    aria-describedby="basic-addon1">
+                <input type="text" class="form-control" id="searchInput" placeholder="Enter a course name"
+                    aria-label="Username" aria-describedby="basic-addon1">
             </div>
             <div class="d-flex flex-wrap" id="Search">
                 <% courses.forEach(function(val) { %>
-                <div class="p-2 bd-highlight">
-                    <div class="flex-item">
-                    <div class="flex-shrink-0">
-                        <img src="..." alt="...">
+                    <div class="p-2 bd-highlight <%= val.CourseID %>">
+                        <div class="flex-item">
+                            <div class="flex-shrink-0">
+                                <img src="..." alt="...">
+                            </div>
+                            <div>
+                                <a href="/courseinfo/<%= val.CourseID %>">
+                                    <h5>
+                                        <%= val.Prefix %>
+                                    </h5>
+                                </a>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6>
+                                    <%= val.Course_Name %>
+                                </h6>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <a href="/courseinfo/<%= val.CourseID %>"><h5><%= val.Prefix %></h5></a>
-                    </div>
-                    <div class="flex-grow-1 ms-3">
-                        <h6><%= val.Course_Name %></h6>
-                    </div>
-                    </div>
-                </div>
-                <% }); %>
+                    <% }); %>
             </div>
         </div>
         <!--- End Landing Page Section-->
