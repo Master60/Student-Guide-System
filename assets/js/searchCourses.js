@@ -6,9 +6,7 @@ let start = 1;
 
 socket.on("coursesSearched", function (coursesSearched) {
     let i = 0;
-    console.log(coursesSearched);
     for (let k = 0; k < coursesSearched.length; k++) {
-        console.log(i);
         if (coursesSearched.length < searchDiv.children.length && coursesSearched[k].CourseID.toString() != searchDiv.children[i].classList[2].toString()) {
             // change image as well when it is here.
             searchDiv.removeChild(searchDiv.children[i]);
@@ -35,7 +33,6 @@ socket.on("coursesSearched", function (coursesSearched) {
             
             `, "text/html").body.children[0];
 
-            console.log(newElement);
 
             newElement.classList.add(coursesSearched[k].CourseID);
             if (searchDiv.children[i]) {
