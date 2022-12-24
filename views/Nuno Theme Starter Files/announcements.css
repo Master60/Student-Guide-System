@@ -43,7 +43,7 @@ body {
     width: 100%;
     max-width: 100%;
     position: absolute;
-    top: 20%;
+    top: 38%;
     z-index: 1;
     color: white;
     text-transform: uppercase;
@@ -79,7 +79,17 @@ body {
     z-index: -1000;
 }
 
-.table {
-    width:65%;
-    margin-left: 17%;
+.d-flex {
+    justify-content: center;
+}
+
+.p-2 {
+    width: 90%;
+    height: 8rem;
+    background-color: rgba(0, 191, 255, 0.103);
+    margin: 2.5rem;
+}
+
+.flex-item {
+    justify-content: left;
 }
