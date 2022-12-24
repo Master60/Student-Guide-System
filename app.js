@@ -25,7 +25,7 @@ app.use(expressSession({
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "iNtratel@2013lol",
+    password: "SQLserverBYmina_2022",
     database: "sgs"
 });
 
