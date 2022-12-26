@@ -22,14 +22,18 @@ app.use(expressSession({
     saveUninitialized: false
 }));
 
-var con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "SQLserverBYmina_2022",
-    database: "sgs"
-});
 
-app.use(function(req, res, next) { // Locals
+var fs = require('fs');
+var con = mysql.createConnection({ host: "studentguidsystem.mysql.database.azure.com", 
+user: "adminsgs", password: "MySGSserver@2022",
+ database: "sgs", 
+ port: 3306,
+ ssl:{ca:fs.readFileSync("DigiCertGlobalRootCA.crt.pem")}
+ });
+
+
+
+app.use(function (req, res, next) { // Locals
     res.locals.messages = req.flash("success");
     res.locals.errors = req.flash("error");
     next();
@@ -52,18 +56,17 @@ app.get("/courses", function (req, res, next) {
 
 app.get("/courseinfo/:course", function (req, res, next) {
     con.connect(function (err) {
-        con.query("SELECT * From courses, Article, Users, College WHERE CourseID='" + req.params.course +
-            "' AND C_Description=ArticleID AND LoginID = userID AND Users.CollegeID = College.CollegeID", function (err, result) {
-                con.query("select SemesterName from c_in_semester where c_in_semester.CourseID =" + req.params.course + ";", function (err, Semesters) {
-                    con.query("select F_Name , L_Name from Users , teaches where teaches.CourseID  = '"+ req.params.course + "' AND teaches.InstructorID = Users.loginID;", function (err, Names) {
-                        res.render("Nuno Theme Starter Files/course info.ejs", {
-                            course: result[0],
-                            Semester: Semesters,
-                            InstructorName :Names
-                        });
+        con.query("CALL RetrieveCourseArticleAndUser(" + req.params.course + ");", function (err, result) {
+            con.query("Call GetSemesterName(?)", [req.params.course], function (err, Semesters) {
+                con.query("call GetNameOfInstructor(?)", req.params.course, function (err, Names) {
+                    res.render("Nuno Theme Starter Files/course info.ejs", {
+                        course: result[0][0],
+                        Semester: Semesters[0],
+                        InstructorName: Names[0]
                     });
                 });
             });
+        });
     });
 });
 
@@ -75,11 +78,11 @@ app.set("views", path.join(__dirname, "views"));
 
 http.listen(2305, function () {
     console.log("Server has started on port 2305".toUpperCase());
-    io.on("connection", function(socket) {
+    io.on("connection", function (socket) {
         socket.on("searchOfcourses", function (course) {
             if (course) {
-                con.query("SELECT * FROM courses WHERE Course_Name LIKE '%" + course + "%'", function (err, result) {
-                    socket.emit("coursesSearched", result);
+                con.query("CALL SearchAllCourses(?)", [course], function (err, result) {
+                    socket.emit("coursesSearched", result[0]);
                 });
             }
             else {

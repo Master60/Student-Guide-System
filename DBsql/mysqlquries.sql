@@ -1,2 +1,6 @@
-use sgs ;
-select F_Name , L_Name from Users , teaches where teaches.CourseID  = 1 AND teaches.InstructorID = Users.loginID;
+DELIMITER $$ 
+CREATE PROCEDURE GetNameOfInstructor( IN CourseID varchar(20) ) 
+BEGIN 
+SELECT F_Name , L_Name from Users , teaches where teaches.CourseID  = CourseID AND teaches.InstructorID = Users.loginID;
+END 
+$$ 
