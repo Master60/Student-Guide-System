@@ -4,7 +4,7 @@ var express = require("express"),
     router = express.Router({ mergeParams: true });
 
 router.get("/", function (req, res, next) {
-    req.session.refe = "/courses/";
+    req.session.refe = "/courses";
     isAuthorized(req, res, function () {
         connection.query("SELECT * From courses", function (err, result) {
             res.render("Nuno Theme Starter Files/courses.ejs", {
