@@ -1,8 +1,7 @@
-const { isLoggedIn, isAuthorized } = require("../middleware/index");
+const { isLoggedIn, isAuthorized, goToReferrer } = require("../middleware/index");
 const { encrypt, compare } = require("../middleware/encrypt");
 const env = require("dotenv").config();
-const mssql = require("msnodesqlv8");
-
+const connection  = require("../DBsql/DB");
 var express = require("express"),
     router = express.Router({ mergeParams: true });
 
@@ -18,18 +17,21 @@ router.get("/login", isLoggedIn, function (req, res) {
     res.render("Nuno Theme Starter Files/Login-Register.ejs");
 });
 
-router.post("/login", isLoggedIn, function (req, res) {
-    let hashed = mssql.query(process.env.CONNECTION_STRING, "SELECT password FROM Users WHERE username='"
+router.post("/login", isLoggedIn, function (req, res, next) {
+    connection.query("SELECT LoginID, UserType, PWD FROM Users WHERE F_Name='"
         + req.body.username + "'", function (err, rows) {
             if (err || !rows[0]) {
+                console.log("Hey");
                 req.flash("error", "Username or password is wrong");
                 res.redirect("/login");
             }
             else {
-                compare(req.body.password, rows[0].password, function (next) {
-                    if (next) {
+                compare(req.body.password, rows[0].PWD, function (same) {
+                    if (same) {
                         req.flash("success", "Welcome");
-                        res.redirect("/login");  // To be Modified
+                        req.session.identity = rows[0].LoginID;
+                        req.session.userType = rows[0].UserType;
+                        res.redirect(req.session.refe)
                     }
                     else {
                         req.flash("error", "Username or password is wrong");
@@ -38,7 +40,6 @@ router.post("/login", isLoggedIn, function (req, res) {
                 });
             }
         });
-
 
 });
 

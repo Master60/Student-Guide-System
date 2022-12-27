@@ -274,12 +274,13 @@ CREATE TRIGGER FixDepManage
     BEGIN
 	DELETE FROM MANAGES  WHERE InstructorId in 
 	(SELECT InstructorID FROM (Select ProgramID, COUNT(*) FROM MANAGES GROUP BY ProgramID HAVING COUNT(*) >= 2) 
-	AS TEMPO(ProgramID, c), MANAGES	WHERE TEMPO.ProgramID = MANAGES.ProgramID AND InstructorId = OLD.InstructorID);
+	AS TEMPO(ProgramID, c), MANAGES	WHERE TEMPO.ProgramID = MANAGES.ProgramID AND InstructorId = OLD.LoginID);
 
 	UPDATE MANAGES SET InstructorId = 0 WHERE InstructorId in 
 	(SELECT InstructorID FROM (Select ProgramID, COUNT(*) FROM MANAGES GROUP BY ProgramID HAVING COUNT(*) < 2) 
-	AS TEMPO(ProgramID, c), MANAGES	WHERE TEMPO.ProgramID = MANAGES.ProgramID AND InstructorId = OLD.InstructorID);
+	AS TEMPO(ProgramID, c), MANAGES	WHERE TEMPO.ProgramID = MANAGES.ProgramID AND InstructorId = OLD.LoginID);
     END;
+|
 
 delimiter ;
 	
