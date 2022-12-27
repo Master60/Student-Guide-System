@@ -72,12 +72,14 @@
                                     </div>
                                     <div class="card-body" style="padding: 0px;">
                                         <div class="card-title"
-                                            style="color: white; text-align: left; white-space: pre-line;"><%= val.ArticleText.substring(0, 200) %>...
+                                            style="color: white; text-align: left; white-space: pre-line;"><% if (val.ArticleText.length > 200 ) { %><%= val.ArticleText.substring(0, 200) %>...<% } else { %> <%= val.ArticleText %><% }%>
                                         </div>
                                     </div>
                                     <a href="/campgrounds/<%= val.ArticleID %>" class="btn btn-primary mb-3"
                                         style="width: fit-content; margin: auto;">More Info</a>
-                                </div>
+
+       
+                                    </div>
                             </div>
                         </div>
                     </div>
