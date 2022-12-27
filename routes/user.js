@@ -1,6 +1,5 @@
 const { isLoggedIn, isAuthorized, goToReferrer } = require("../middleware/index");
 const { encrypt, compare } = require("../middleware/encrypt");
-const env = require("dotenv").config();
 const connection  = require("../DBsql/DB");
 var express = require("express"),
     router = express.Router({ mergeParams: true });

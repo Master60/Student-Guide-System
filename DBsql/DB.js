@@ -1,10 +1,14 @@
 var mysql = require("mysql")
-var con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "SQLserverBYmina_2022",
-    database: "sgs"
-});
+var fs = require('fs');
+const env = require("dotenv").config();
+
+
+var con = mysql.createConnection({ host: process.env.HOST, 
+user: process.env.USER, password: process.env.PASSWORD,
+ database: process.env.DATABASE, 
+ port: process.env.PORT,
+ ssl:{ca:fs.readFileSync(process.env.SSL_CERT)}
+ });
 
 con.connect(function(err) {
     if (err) {

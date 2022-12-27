@@ -7,8 +7,8 @@ var express = require("express"),
     expressSession = require("express-session"),
     methodOverride = require("method-override"),
     path = require("path"),
-    route = "",
-    refe = "",
+    //route = "",
+    //refe = "",
     //rout = "",
     flash = require("connect-flash"),
     con = require("./DBsql/DB"),
@@ -49,8 +49,8 @@ http.listen(2305, function () {
     io.on("connection", function (socket) {
         socket.on("searchOfcourses", function (course) {
             if (course) {
-                con.query("SELECT * FROM courses WHERE Course_Name LIKE '%" + course + "%'", function (err, result) {
-                    socket.emit("coursesSearched", result);
+                con.query("CALL SearchAllCourses(?)", [course], function (err, result) {
+                    socket.emit("coursesSearched", result[0]);
                 });
             }
             else {

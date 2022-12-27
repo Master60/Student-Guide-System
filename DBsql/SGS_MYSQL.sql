@@ -21,7 +21,7 @@ CREATE TABLE USERS(
 	LoginID varchar(10) not null default 0,
 	F_Name varchar(10) not null , 
 	L_Name varchar(10) not null ,
-	PWD  varchar(50) not null, -- password 
+	PWD  varchar(100) not null, -- password 
 	UserType varchar(10) not null, 
 	CollegeID varchar(10) not null, 
 	unique(LoginID) , 
@@ -267,30 +267,6 @@ CREATE TABLE MANAGES ( -- INSTRUCTOR MANGES PROGRAM
 	ON DELETE cascade
 );
 
-delimiter |
-CREATE TRIGGER FixDepManage
-	AFTER DELETE ON Instructor
-	FOR EACH ROW -- Need to Be tested
-    BEGIN
-	DELETE FROM MANAGES  WHERE InstructorId in 
-	(SELECT InstructorID FROM (Select ProgramID, COUNT(*) FROM MANAGES GROUP BY ProgramID HAVING COUNT(*) >= 2) 
-	AS TEMPO(ProgramID, c), MANAGES	WHERE TEMPO.ProgramID = MANAGES.ProgramID AND InstructorId = OLD.LoginID);
-
-	UPDATE MANAGES SET InstructorId = 0 WHERE InstructorId in 
-	(SELECT InstructorID FROM (Select ProgramID, COUNT(*) FROM MANAGES GROUP BY ProgramID HAVING COUNT(*) < 2) 
-	AS TEMPO(ProgramID, c), MANAGES	WHERE TEMPO.ProgramID = MANAGES.ProgramID AND InstructorId = OLD.LoginID);
-    END;
-|
-
-delimiter ;
-	
-
-CREATE TRIGGER DeleteRedundantDepManage
-	AFTER INSERT ON MANAGES
-    FOR EACH ROW
-	-- Need to Be tested
-	DELETE FROM MANAGES WHERE InstructorId=0 AND ProgramID = NEW.ProgramID;
-
 CREATE TABLE TEACHES (
 	InstructorId varchar(10) not null, 
 	CourseID varchar (20) not null , 
@@ -336,7 +312,7 @@ CREATE TRIGGER DELETECourses
 	-- Need to be tested
 	DELETE from Courses WHERE CourseID in (SELECT CourseID FROM 
 	(SELECT CourseID, COUNT(*) FROM IsTakenBy GROUP BY CourseID HAVING COUNT(*) < 2) 
-	AS TEMPO(CourseID, c), IsTakenBy WHERE TEMPO.CourseID = IsTakenBy.CourseID AND ProgramID = OLD.ProgramID);
+	AS TEMPO, IsTakenBy WHERE TEMPO.CourseID = IsTakenBy.CourseID AND ProgramID = OLD.ProgramID);
     END;
 |
 delimiter ;
@@ -415,3 +391,5 @@ CREATE TRIGGER DeleteArticles
 	FOR EACH ROW
 	DELETE FROM Article WHERE ArticleID in 
 	(SELECT ArticleID FROM A_About_program WHERE ProgramID = OLD.ProgramID);
+
+

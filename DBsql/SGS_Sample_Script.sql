@@ -79,4 +79,15 @@ INSERT INTO `sgs`.`teaches` (`InstructorId`, `CourseID`) VALUES ('1300200', '2')
 INSERT INTO `sgs`.`teaches` (`InstructorId`, `CourseID`) VALUES ('1300400', '3');
 INSERT INTO `sgs`.`teaches` (`InstructorId`, `CourseID`) VALUES ('1300300', '4');
 
+
+
 UPDATE `sgs`.`courses` SET `C_Description` = 'Art039' WHERE (`CourseID` = '5');
+
+
+INSERT INTO `sgs`.`article` (`ArticleID`, `A_Type`, `A_Timestamp`, `userID`, `ArticleText`) VALUES ('Artc01', 'ArticleType1', '2022-01-12 00:00:00', '1200100', 'Course one is here , Ya rab n5ls');
+INSERT INTO `sgs`.`article` (`ArticleID`, `A_Type`, `A_Timestamp`, `userID`, `ArticleText`) VALUES ('Artc02', 'ArticleType1', '2022-01-13 00:00:00', '1200200', 'Course two is here , 2stor ya Rab');
+INSERT INTO `sgs`.`article` (`ArticleID`, `A_Type`, `A_Timestamp`, `userID`, `ArticleText`) VALUES ('Artc03 ', 'ArticleType1', '2022-01-14 00:00:00', '1200100', 'Course three is here , ya sater');
+
+INSERT INTO `sgs`.`a_about_course` (`CourseID`, `ArticleID`) VALUES ('3', 'Artc02');
+INSERT INTO `sgs`.`a_about_course` (`CourseID`, `ArticleID`) VALUES ('1', 'Artc01');
+INSERT INTO `sgs`.`a_about_course` (`CourseID`, `ArticleID`) VALUES ('2', 'Artc02');
