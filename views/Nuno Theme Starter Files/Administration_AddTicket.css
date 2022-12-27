@@ -79,57 +79,7 @@ body {
     z-index: -1000;
 }
 
-.d-flex {
-    justify-content: center;
-}
-
-.p-2 {
-    width: 90%;
-    background-color: rgba(0, 191, 255, 0.103);
-    margin: 2.5rem;
-}
-
-.flex-item {
-    justify-content: left;
-}
-
-.card-holder {
-    margin: auto;
-    height: fit-content;
-    background-color: rgba(255, 255, 255, 0.3);
-}
-
-.UserData {
-    display: inline-block;
-    width: fit-content;
-}
-
-.caption .UserData .UserImage {
-    display: inline-block; 
-    border-radius: 25px;
-    height: 50px; 
-    width: 50px; 
-    margin-right: 10px;
-}
-
-.Username {
-    float: right;
-    width: fit-content; 
-    white-space: pre-line;
-    text-align: left;
-    /*margin-top: 20px;*/
-}
-
-span {
-    font-size: 12px;
-}
-
-.Title {
-    float: right;
-    width: fit-content; 
-    /*margin-top: 20px;*/
-}
-
-.row {
-    margin: auto;
+.form-group {
+    margin-left: 34%;
+    width: 25rem;
 }

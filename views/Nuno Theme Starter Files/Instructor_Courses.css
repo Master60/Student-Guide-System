@@ -40,10 +40,11 @@ body {
 }
 
 .caption {
-    width: 100%;
+    width: 75%;
     max-width: 100%;
     position: absolute;
-    top: 38%;
+    top: 30%;
+    margin-left: 12.2%;
     z-index: 1;
     color: white;
     text-transform: uppercase;
@@ -79,57 +80,25 @@ body {
     z-index: -1000;
 }
 
+.input-group {
+    margin-top: 3rem;
+}
+
+a h5:hover {
+    color: #FFD700;
+}
+
+svg.svg-inline--fa {
+    color: #FFD700;
+    margin-bottom: 3rem;
+}
+
 .d-flex {
     justify-content: center;
 }
 
 .p-2 {
-    width: 90%;
-    background-color: rgba(0, 191, 255, 0.103);
-    margin: 2.5rem;
-}
-
-.flex-item {
-    justify-content: left;
-}
-
-.card-holder {
-    margin: auto;
-    height: fit-content;
-    background-color: rgba(255, 255, 255, 0.3);
-}
-
-.UserData {
-    display: inline-block;
-    width: fit-content;
-}
-
-.caption .UserData .UserImage {
-    display: inline-block; 
-    border-radius: 25px;
-    height: 50px; 
-    width: 50px; 
-    margin-right: 10px;
-}
-
-.Username {
-    float: right;
-    width: fit-content; 
-    white-space: pre-line;
-    text-align: left;
-    /*margin-top: 20px;*/
-}
-
-span {
-    font-size: 12px;
-}
-
-.Title {
-    float: right;
-    width: fit-content; 
-    /*margin-top: 20px;*/
-}
-
-.row {
-    margin: auto;
+    background: rgba(0, 21, 255, 0.228);
+    width: 17.5rem;
+    margin: 1rem;
 }
