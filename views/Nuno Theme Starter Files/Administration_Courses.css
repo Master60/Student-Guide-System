@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+body {
+    overflow-x: hidden;
+    font-family: 'Lato', sans-serif;
+    color: #595a5e;
+}
+
+/*--- Navigation --*/
+
+.navbar {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: .9rem;
+    /*1 rem = 16 pixels*/
+    letter-spacing: .1rem;
+    /*  background: rgba(14, 44, 97, 0.84) !important;*/
+    background: rgba(0, 0, 0, 0.89) !important;
+
+}
+
+.navbar-brand img {
+    height: 2rem;
+    margin-right: 1rem;
+}
+
+.navbar-nav li {
+    padding-right: 2.9rem;
+    font-size: 0.72rem;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+    padding-top: .8rem;
+}
+
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #FFD700;
+}
+
+.caption {
+    width: 75%;
+    max-width: 100%;
+    position: absolute;
+    top: 30%;
+    margin-left: 12.2%;
+    z-index: 1;
+    color: white;
+    text-transform: uppercase;
+}
+
+.caption h1 {
+    font-size: 3.8rem;
+    font-weight: 700;
+    letter-spacing: .3rem;
+    text-shadow: .1rem .1rem .8rem black;
+
+}
+
+.caption h3 {
+    font-size: 2rem;
+    text-shadow: .1rem .1rem .5rem black;
+    padding-bottom: 1.6rem;
+}
+
+.caption img {
+    height: 6rem;
+    margin-bottom: 2rem;
+}
+
+#fixed {
+    position: fixed;
+    background-image: url("img/Books.jpeg");
+    filter: brightness(20%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    z-index: -1000;
+}
+
+.input-group {
+    margin-top: 3rem;
+}
+
+a h5:hover {
+    color: #FFD700;
+}
+
+svg.svg-inline--fa {
+    color: #FFD700;
+    margin-bottom: 3rem;
+}
+
+.d-flex {
+    justify-content: center;
+}
+
+.p-2 {
+    background: rgba(0, 21, 255, 0.228);
+    width: 17.5rem;
+    margin: 1rem;
+}
