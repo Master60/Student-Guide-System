@@ -27,6 +27,47 @@ END
 $$ 
 delimiter ;
 
+DELIMITER $$ 
+CREATE PROCEDURE GetArticleAboutCourseAndAuther(IN SID varchar(20) ) 
+BEGIN 
+Select ArticleText , F_Name, L_Name , A_Timestamp from  (select distinct * from 
+(select ArticleID from a_about_course, (Select CourseID from s_takes_c where StudentID = SID ) as N where a_about_course.CourseID = N.CourseID) as A natural join Article ) as T , users where users.loginID = T.userID
+order by A_Timestamp desc ; 
+END 
+$$ 
+delimiter ;
+DELIMITER $$ 
+CREATE PROCEDURE GetArticleAboutCompanyAndAuther(IN SID varchar(20) ) 
+BEGIN 
+Select ArticleText , F_Name, L_Name , A_Timestamp from  (select distinct * from 
+(select ArticleID from a_about_company, (Select CompanyID from follows where StudentID = SID ) as N where a_about_company.CompanyID = N.CompanyID) as A natural join Article ) as T , users where users.loginID = T.userID
+order by A_Timestamp desc ; 
+END 
+$$ 
+delimiter ; 
+
+DELIMITER $$ 
+CREATE PROCEDURE PopulateAnnouncement(IN SID varchar(20) ) 
+BEGIN 
+Select ArticleText , F_Name, L_Name , A_Timestamp from  (select distinct * from 
+(select ArticleID from a_about_course, (Select CourseID from s_takes_c where StudentID = SID ) as N where a_about_course.CourseID = N.CourseID) as A natural join Article ) as T , users where users.loginID = T.userID
+UNION
+Select ArticleText , F_Name, L_Name , A_Timestamp from  (select distinct * from 
+(select ArticleID from a_about_company, (Select CompanyID from follows where StudentID = SID ) as N where a_about_company.CompanyID = N.CompanyID) as A natural join Article ) as T , users where users.loginID = T.userID
+order by A_Timestamp desc ; 
+END 
+$$ 
+delimiter ; 
+
+
+
+
+
+
+
+
+
+
 
 
 
