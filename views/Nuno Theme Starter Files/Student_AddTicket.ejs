@@ -17,7 +17,9 @@
             }
             else if (document.getElementById("error1").style.display != "none") {
                 if (document.getElementById("Course").options[document.getElementById("Course").selectedIndex].value == "") {
-                    document.getElementsByTagName("form")[0].attributes.removeNamedItem("novalidate");
+                    if (document.getElementsByTagName("form")[0].attributes['novalidate']) {
+                        document.getElementsByTagName("form")[0].attributes.removeNamedItem("novalidate");
+                    }
                     document.getElementsByTagName("form")[0].reportValidity();
                     return false;
                 }
@@ -25,7 +27,9 @@
                 document.getElementById("text").focus();
                 return false;
             }
-            document.getElementsByTagName("form")[0].attributes.removeNamedItem("novalidate");
+            if (document.getElementsByTagName("form")[0].attributes['novalidate']) {
+                document.getElementsByTagName("form")[0].attributes.removeNamedItem("novalidate");
+            }
             if (document.getElementsByTagName("form")[0].checkValidity()) {
                 document.getElementsByTagName("form")[0].submit();
             }
@@ -92,7 +96,8 @@
                     </h5>
                     <% } %>
                         <label>Ticket Title</label>
-                        <input id="Title" name="Title" <% if(previous) {%> value="<%= previous.Title %>" <%}%> required maxlength="100">
+                        <input id="Title" name="Title" <% if(previous) {%> value="<%= previous.Title %>" <%}%> required
+                                maxlength="100">
                                 <br>
                                 <div id="error" style="display: none;">
                                     <h6 style="color: red;">You can't input an article of all empty spaces</h6>
@@ -101,8 +106,10 @@
                                 <select name="Course" id="Course" required>
                                     <option value="" selected disabled hidden>Select Course</option>
                                     <% courses.forEach(function(val) { %>
-                                        <option <% if (previous && previous.Course==val.CourseID) { %> selected <% } %> value="<%= val.CourseID %>"><%= val.Course_Name %></option>
-                                    <% }); %>
+                                        <option <% if (previous && previous.Course==val.CourseID) { %> selected <% } %>
+                                                value="<%= val.CourseID %>"><%= val.Course_Name %>
+                                        </option>
+                                        <% }); %>
                                 </select>
                                 <div class="form-group">
                                     <label for="comment">Ticket Description</label>

@@ -62,17 +62,24 @@ router.post("/postTicket", function (req, res, next) {
             else {
                 if (req.body.Title.length <= 100) {
                     var newCount = newArticleID[0]["COUNT(ArticleID)"] + 202;
-                    connection.query("CALL postTicket(?, ?, ?, ?, ?)", ["Artn0" + newCount,
-                    req.body.Course, req.session.identity, req.body.complaint || undefined, req.body.Title || undefined], function (err) {
-                        if (err) {
-                            req.session.PreviousRequest = req.body;
-                            req.session.Failure = "Illegal Submission Made";
-                            res.redirect("/postTicket");
-                        }
-                        else {
-                            res.redirect("/courses"); /// To Be Changed
-                        }
-                    })
+                    if (req.body.complaint.replace(/\s/g, '').length && req.body.Title.replace(/\s/g, '').length) {
+                        connection.query("CALL postTicket(?, ?, ?, ?, ?)", ["Artn0" + newCount,
+                        req.body.Course, req.session.identity, req.body.complaint || undefined, req.body.Title || undefined], function (err) {
+                            if (err) {
+                                req.session.PreviousRequest = req.body;
+                                req.session.Failure = "Submission Data Error. Please Revise Entered Data.";
+                                res.redirect("/postTicket");
+                            }
+                            else {
+                                res.redirect("/courses"); /// To Be Changed
+                            }
+                        })
+                    }
+                    else {
+                        req.session.PreviousRequest = req.body;
+                        req.session.Failure = "Enter Meaningful data.";
+                        res.redirect("/postTicket");
+                    }
                 }
             }
         });
