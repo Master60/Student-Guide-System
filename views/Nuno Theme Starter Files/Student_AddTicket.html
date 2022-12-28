@@ -54,11 +54,10 @@
         <!--- End Navigation-->
 
         <!--- Start Landing Page Section -->
-        <form>
+    <!--    <form>
             <div class="caption text-center">
-                <a href="#"><img src="img/SGS1.png"></a>
-                <h1>Welcome to SGS</h1>
-                <h3>The Student Guide System</h3>
+
+                <h3>Request help</h3>
                 <label>Ticket Title</label>
                 <textarea></textarea>
                 <br>
@@ -77,6 +76,34 @@
                 </div>
             </div>
         </form>
+      -->
+  <form>
+  <div class="caption text-center">
+
+  <div class="form-group rounded-top-20 rounded-bottom-20 ">
+    <h2> Create a new ticket</h2>
+
+    <label> Title</label>
+    <textarea placeholder="Ticket Title" class="form-control" id="comment" rows="1"></textarea>
+    <br>
+    <label> Course</label>
+    <select class="form-control" id="Course">
+      <option value="null" selected disabled hidden>Select Course</option>
+      <option value="student"> Student</option>
+      <option value="Instructor">Instructor</option>
+      <option value="adminstration">Adminstration</option>
+      <option value="graduate">Graduate</option>
+    </select>
+
+    <br>
+    <textarea placeholder="Ticket Description" class="form-control" id="comment" rows="8"></textarea>
+
+    <button type="button" class="btn btn-light">Submit Ticket</button>
+
+  </div>
+  </div>
+</form>
+
         <!--- End Landing Page Section-->
 
     </div>

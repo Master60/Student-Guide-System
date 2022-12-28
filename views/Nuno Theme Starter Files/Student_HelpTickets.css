@@ -43,7 +43,7 @@ body {
     width: 100%;
     max-width: 100%;
     position: absolute;
-    top: 38%;
+    top: 14%;
     z-index: 1;
     color: white;
     text-transform: uppercase;
@@ -57,10 +57,32 @@ body {
 
 }
 
+
+.caption h2 {
+    margin-bottom: 2rem;
+
+}
+
 .caption h3 {
     font-size: 2rem;
     text-shadow: .1rem .1rem .5rem black;
     padding-bottom: 1.6rem;
+}
+
+.caption h4 {
+font-size: 1.4rem;
+color: #ffffff;
+}
+
+.caption h4:hover{
+text-decoration: underline;
+font-size: 1.6rem;
+color: #ffffff;
+transition: 0.5s;
+}
+
+.caption h5 {
+color: #4287f5;
 }
 
 .caption img {
@@ -79,12 +101,31 @@ body {
     z-index: -1000;
 }
 
+.rounded-top-20 {
+  border-top-right-radius: 20px!important;
+  border-top-left-radius: 20px!important;
+}
+
+.rounded-bottom-20 {
+  border-bottom-left-radius: 20px!important;
+  border-bottom-right-radius: 20px!important;
+}
+
 .d-flex {
     justify-content: center;
+    width: 30rem;
+    margin:auto;
+    margin-top: 1.5rem;
 }
 
 .p-2 {
-    background: rgba(0, 21, 255, 0.228);
+    background: rgba(255, 255, 255, 0.228);
     width: 50rem;
+    height: 5rem;
     margin: 1rem;
+    margin-bottom: 2.5rem;
+}
+.btn{
+height: 3rem;
+
 }
