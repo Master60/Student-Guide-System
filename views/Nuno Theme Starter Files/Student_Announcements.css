@@ -43,7 +43,7 @@ body {
     width: 100%;
     max-width: 100%;
     position: absolute;
-    top: 38%;
+    top: 22%;
     z-index: 1;
     color: white;
     text-transform: uppercase;
@@ -95,9 +95,10 @@ body {
 
 .card-holder {
     margin: auto;
-    max-height: 240px;
-    height: fit-content;
-    background-color: rgba(255, 255, 255, 0.3);
+    height: 255px;
+    background-color: rgba(255, 255, 255, 0.28);
+    width: 100%;
+
 }
 
 .UserData {
@@ -106,15 +107,15 @@ body {
 }
 
 .caption .UserData .UserImage {
-    display: inline-block; 
-    height: 50px; 
-    width: 50px; 
+    display: inline-block;
+    height: 50px;
+    width: 50px;
     margin-right: 10px;
 }
 
 .Username {
     float: right;
-    width: fit-content; 
+    width: fit-content;
     white-space: pre-line;
     text-align: left;
     /*margin-top: 20px;*/
@@ -126,7 +127,7 @@ span {
 
 .Title {
     float: right;
-    width: fit-content; 
+    width: fit-content;
     /*margin-top: 20px;*/
 }
 

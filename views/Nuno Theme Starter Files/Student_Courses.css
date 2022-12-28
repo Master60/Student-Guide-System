@@ -43,7 +43,7 @@ body {
     width: 75%;
     max-width: 100%;
     position: absolute;
-    top: 30%;
+    top: 26%;
     margin-left: 12.2%;
     z-index: 1;
     color: white;
@@ -65,8 +65,9 @@ body {
 }
 
 .caption img {
-    height: 6rem;
+    height: 8rem;
     margin-bottom: 2rem;
+
 }
 
 #fixed {
@@ -98,7 +99,7 @@ svg.svg-inline--fa {
 }
 
 .p-2 {
-    background: rgba(0, 21, 255, 0.228);
+    background: rgba(255, 255, 255, 0.2);
     width: 17.5rem;
     margin: 1rem;
 }
