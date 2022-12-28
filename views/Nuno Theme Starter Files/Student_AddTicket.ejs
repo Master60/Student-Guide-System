@@ -59,12 +59,13 @@
                 <a href="#"><img src="img/SGS1.png"></a>
                 <h1>Welcome to SGS</h1>
                 <h3>The Student Guide System</h3>
+                <% if (previous) { %> <h5 style="text-align: center; color: red;"><%= previous.Failure %></h5> <% } %>
                 <label>Ticket Title</label>
                 <input name="Title" required maxlength="100">
                 <br>
                 <label for="Course"><b>Course</b></label>
                 <select name="Course" id="Course" required>
-                    <option value="null" selected disabled hidden>Select Course</option>
+                    <option value="" selected disabled hidden>Select Course</option>
                     <% courses.forEach(function(val) { %>
                         <option value="<%= val.CourseID %>"><%= val.Course_Name %></option>
                     <% }); %>

@@ -30,12 +30,14 @@ router.get("/postTicket", function (req, res, next) {
                 console.log(err)
             }
             else {
+                var i = req.session.PreviousRequest;
+                req.session.PreviousRequest = undefined;
                 res.render("Nuno Theme Starter Files/Student_AddTicket.ejs", {
                     courses: studentCourses,
-                    previous: (req.session.PreviousRequest) ? {
-                        Title: req.session.PreviousRequest.Title,
-                        Course: req.session.PreviousRequest.Course,
-                        RequestText: req.session.PreviousRequest.complaint,
+                    previous: (i) ? {
+                        Title: i.Title,
+                        Course: i.Course,
+                        RequestText: i.complaint,
                         Failure: "Illegal Submission Made"
                     } : undefined
                 })
@@ -55,9 +57,8 @@ router.post("/postTicket", function (req, res, next) {
                 if (req.body.Title.length <= 100) {
                     var newCount = newArticleID[0]["COUNT(ArticleID)"] + 101;
                         connection.query("CALL postTicket(?, ?, ?, ?, ?)", ["Artn0" + newCount,
-                    req.body.Course, req.session.identity, req.body.complaint, req.body.Title], function(err) {
+                    req.body.Course, req.session.identity, req.body.complaint || undefined, req.body.Title || undefined], function(err) {
                         if (err) {
-                            console.log(err);
                             req.session.PreviousRequest = req.body;
                             res.redirect("/postTicket");
                         }
