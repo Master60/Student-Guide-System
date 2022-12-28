@@ -32,11 +32,12 @@ router.get("/postTicket", function (req, res, next) {
             else {
                 res.render("Nuno Theme Starter Files/Student_AddTicket.ejs", {
                     courses: studentCourses,
-                    previous: {
+                    previous: (req.session.PreviousRequest) ? {
                         Title: req.session.PreviousRequest.Title,
                         Course: req.session.PreviousRequest.Course,
-                        RequestText: req.session.PreviousRequest.complaint
-                    }
+                        RequestText: req.session.PreviousRequest.complaint,
+                        Failure: "Illegal Submission Made"
+                    } : undefined
                 })
             }
         });
