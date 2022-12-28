@@ -43,7 +43,7 @@ body {
     width: 100%;
     max-width: 100%;
     position: absolute;
-    top: 38%;
+    top: 20%;
     z-index: 1;
     color: white;
     text-transform: uppercase;
@@ -60,12 +60,18 @@ body {
 .caption h3 {
     font-size: 2rem;
     text-shadow: .1rem .1rem .5rem black;
-    padding-bottom: 1.6rem;
+    padding-bottom: 4rem;
+
 }
 
 .caption img {
     height: 6rem;
     margin-bottom: 2rem;
+}
+#stdimage
+{
+height: 8rem;
+
 }
 
 #fixed {
@@ -77,4 +83,39 @@ body {
     width: 100%;
     height: 100vh;
     z-index: -1000;
+}
+
+.list-group
+{
+color: black;
+opacity: 50%;
+width: auto;
+margin:auto;
+margin-top: 2.5rem;
+}
+
+.rounded-top-20 {
+  border-top-right-radius: 25px!important;
+  border-top-left-radius: 25px!important;
+}
+
+.rounded-bottom-20 {
+  border-bottom-left-radius: 25px!important;
+  border-bottom-right-radius: 25px!important;
+}
+
+.card {
+    width: 100%;
+}
+
+.d-flex {
+    justify-content: center;
+}
+
+.p-2 {
+    background: rgba(114, 169, 247, 0.286);
+    width: 20rem;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+    margin-bottom: 1rem;
 }

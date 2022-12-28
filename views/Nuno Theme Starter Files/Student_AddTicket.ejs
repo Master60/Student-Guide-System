@@ -87,7 +87,7 @@
                     </h5>
                     <% } %>
                         <label>Ticket Title</label>
-                        <input id="Title" name="Title" required maxlength="100">
+                        <input id="Title" name="Title" <% if(previous) {%> value="<%= previous.Title %>" <%}%> required maxlength="100">
                         <br>
                         <div id="error" style="display: none;">
                             <h6 style="color: red;">You can't input an article of all empty spaces</h6>
@@ -104,7 +104,7 @@
                         <div class="form-group">
                             <label for="comment">Ticket Description</label>
                             <textarea id="text" required class="form-control" rows="5" name="complaint"
-                                id="comment"></textarea>
+                                id="comment"><%if(previous){%><%=previous.RequestText%><%}%></textarea>
                             <br>
                             <div id="error1" style="display: none;">
                                 <h6 style="color: red;">You can't input an article of all empty spaces</h6>
