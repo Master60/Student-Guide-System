@@ -21,16 +21,33 @@ router.get("/:course", function (req, res, next) {
             connection.query("CALL RetrieveCourseArticleAndUser(" + req.params.course + ");", function (err, result) {
                 connection.query("Call GetSemesterName(?)", [req.params.course], function (err, Semesters) {
                     connection.query("call GetNameOfInstructor(?)", req.params.course, function (err, Names) {
-                        res.render("Nuno Theme Starter Files/course info.ejs", {
-                            course: result[0][0],
-                            Semester: Semesters[0],
-                            InstructorName: Names[0]
-                        });
+                        connection.query("CALL GetContactsOf(?)", [Names[0].LoginID], function (err, contact) {
+                            let contacttemp = undefined;
+                            for (let i = 0; i < contact[0].length; i++ ) {
+                                if(contact[0][i].ContactType == "email") {
+                                    contacttemp = contact[0][i].Contact;
+                                    break;
+                                }
+                            }
+
+                            if (!contacttemp) {
+                                contacttemp = contact[0][0].Contact;
+                            }
+                            
+                            res.render("Nuno Theme Starter Files/course info.ejs", {
+                                course: result[0][0],
+                                Semester: Semesters[0],
+                                InstructorName: Names[0],
+                                contactObj: contacttemp
+                            });
+                        })
                     });
                 });
             });
         });
     });
 });
+
+connection.query("CALL GetContactsOf(?)", ["1300100"], function (err, contact) {console.log(contact)})
 
 module.exports = router;
