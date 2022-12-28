@@ -55,41 +55,50 @@
 
         <!--- Start Landing Page Section -->
         <div class="caption text-center">
-            <h3>Announcements</h3>
+            <a href="#"><img src="img/SGS1.png"></a>
+            <h1>Welcome to SGS</h1>
+            <h3>The Student Guide System</h3>
             <div>
-                <div class="bd-highlight" style="border-radius: 30px;">
-                    <div class="row justify-content-md-center">
-                        <div class="col-lg-10 col-md-10 mt-2 mb-2 row">
-                            <div class="card col-md-10 col-lg-8 card-holder">
-                                <div class="justify-content-start UserData">
-                                    <img class="UserImage" src="<%= campground.image %>">
-                                    <p class="Username" style="white-space: pre-line;">Circuits
-                                        <span>Mina</span></p>
-                                </div>
-                                <div class="card-body" style="padding: 0px;">
-                                    <div class="card-title" style="color: white; text-align: left; white-space: pre-line;">hygg gggggggggggg
-                                        gggggggggggggggggggggaa
-                                        ggggggggggggggggagggggggggggggggggggggggggggggj
+                <% articles.forEach(function(val) { %>
+                    <div class="bd-highlight" style="border-radius: 30px;">
+                        <div class="row justify-content-md-center">
+                            <div class="col-lg-10 col-md-10 mt-2 mb-2 row">
+                                <div class="card col-md-10 col-lg-8 card-holder">
+                                    <div class="justify-content-start UserData mt-3">
+                                        <img class="UserImage" src="/img/nopic.jpg">
+                                        <p class="Username" style="white-space: pre-line;">
+                                            <%= val.Course_Name %>
+                                                <span>
+                                                    <%= val.F_Name + " " + val.L_Name %>
+                                                </span>
+                                        </p>
                                     </div>
+                                    <div class="card-body" style="padding: 0px;">
+                                        <div class="card-title"
+                                            style="color: white; text-align: left; white-space: pre-line;">
+                                            <% if (val.ArticleText.length> 200 ) { %><%= val.ArticleText.substring(0,200) %>...<% } else { %><%= val.ArticleText %><% }%>
+                                        </div>
+                                    </div>
+                                    <a href="/article/<%= val.ArticleID %>" class="btn btn-primary mb-3"
+                                        style="width: fit-content; margin: auto;">More Info</a>
+
+
                                 </div>
-                                <a href="/campgrounds/<%= campground._id %>" class="btn btn-dark" style="width: fit-content; margin: auto;">More Info</a>
                             </div>
                         </div>
-                </div>
-
+                    </div>
+                    <% }); %>
+                        <!--- End Landing Page Section-->
 
             </div>
         </div>
-        <!--- End Landing Page Section-->
+        <!--- End Home Section -->
 
-    </div>
-    <!--- End Home Section -->
-
-    <!--- Script Source Files -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
-    <script src="https://use.fontawesome.com/releases/v6.2.1/js/all.js"></script>
-    <!--- End of Script Source Files -->
+        <!--- Script Source Files -->
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
+        <script src="https://use.fontawesome.com/releases/v6.2.1/js/all.js"></script>
+        <!--- End of Script Source Files -->
 
 </body>
 
