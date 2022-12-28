@@ -57,7 +57,7 @@ router.post("/postTicket", function (req, res, next) {
             }
             else {
                 if (req.body.Title.length <= 100) {
-                    var newCount = newArticleID[0]["COUNT(ArticleID)"] + 201;
+                    var newCount = newArticleID[0]["COUNT(ArticleID)"] + 202;
                         connection.query("CALL postTicket(?, ?, ?, ?, ?)", ["Artn0" + newCount,
                     req.body.Course, req.session.identity, req.body.complaint || undefined, req.body.Title || undefined], function(err) {
                         if (err) {

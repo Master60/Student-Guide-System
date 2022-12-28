@@ -16,7 +16,7 @@
                 return false;
             }
             else if (document.getElementById("error1").style.display != "none") {
-                if (document.getElementById("Course").options[document.getElementById("Course").selectedIndex].value== "") {
+                if (document.getElementById("Course").options[document.getElementById("Course").selectedIndex].value == "") {
                     document.getElementsByTagName("form")[0].attributes.removeNamedItem("novalidate");
                     document.getElementsByTagName("form")[0].reportValidity();
                     return false;
@@ -26,7 +26,12 @@
                 return false;
             }
             document.getElementsByTagName("form")[0].attributes.removeNamedItem("novalidate");
-            document.getElementsByTagName("form")[0].reportValidity();
+            if (document.getElementsByTagName("form")[0].checkValidity()) {
+                document.getElementsByTagName("form")[0].submit();
+            }
+            else {
+                document.getElementsByTagName("form")[0].reportValidity()
+            }
             return true;
         }
     </script>
@@ -88,29 +93,27 @@
                     <% } %>
                         <label>Ticket Title</label>
                         <input id="Title" name="Title" <% if(previous) {%> value="<%= previous.Title %>" <%}%> required maxlength="100">
-                        <br>
-                        <div id="error" style="display: none;">
-                            <h6 style="color: red;">You can't input an article of all empty spaces</h6>
-                        </div>
-                        <label for="Course"><b>Course</b></label>
-                        <select name="Course" id="Course" required>
-                            <option value="" selected disabled hidden>Select Course</option>
-                            <% courses.forEach(function(val) { %>
-                                <option <% if (previous && previous.Course==val.CourseID) { %> selected <% } %> value="
-                                        <%= val.CourseID %>"><%= val.Course_Name %>
-                                </option>
-                                <% }); %>
-                        </select>
-                        <div class="form-group">
-                            <label for="comment">Ticket Description</label>
-                            <textarea id="text" required class="form-control" rows="5" name="complaint"
-                                id="comment"><%if(previous){%><%=previous.RequestText%><%}%></textarea>
-                            <br>
-                            <div id="error1" style="display: none;">
-                                <h6 style="color: red;">You can't input an article of all empty spaces</h6>
-                            </div>
-                            <button>Submit Request</button>
-                        </div>
+                                <br>
+                                <div id="error" style="display: none;">
+                                    <h6 style="color: red;">You can't input an article of all empty spaces</h6>
+                                </div>
+                                <label for="Course"><b>Course</b></label>
+                                <select name="Course" id="Course" required>
+                                    <option value="" selected disabled hidden>Select Course</option>
+                                    <% courses.forEach(function(val) { %>
+                                        <option <% if (previous && previous.Course==val.CourseID) { %> selected <% } %> value="<%= val.CourseID %>"><%= val.Course_Name %></option>
+                                    <% }); %>
+                                </select>
+                                <div class="form-group">
+                                    <label for="comment">Ticket Description</label>
+                                    <textarea id="text" required class="form-control" rows="5" name="complaint"
+                                        id="comment"><%if(previous){%><%=previous.RequestText%><%}%></textarea>
+                                    <br>
+                                    <div id="error1" style="display: none;">
+                                        <h6 style="color: red;">You can't input an article of all empty spaces</h6>
+                                    </div>
+                                    <button>Submit Request</button>
+                                </div>
             </div>
         </form>
         <!--- End Landing Page Section-->
