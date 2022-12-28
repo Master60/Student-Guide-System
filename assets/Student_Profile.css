@@ -43,7 +43,7 @@ body {
     width: 100%;
     max-width: 100%;
     position: absolute;
-    top: 38%;
+    top: 15%;
     z-index: 1;
     color: white;
     text-transform: uppercase;
@@ -60,12 +60,23 @@ body {
 .caption h3 {
     font-size: 2rem;
     text-shadow: .1rem .1rem .5rem black;
-    padding-bottom: 1.6rem;
+    padding-bottom: 4rem;
+
+}
+
+.caption h6 {
+  padding-bottom: 10px;
+
 }
 
 .caption img {
     height: 6rem;
     margin-bottom: 2rem;
+}
+#stdimage
+{
+height: 8rem;
+
 }
 
 #fixed {
@@ -79,10 +90,53 @@ body {
     z-index: -1000;
 }
 
+.list-group
+{
+color: black;
+opacity: 40%;
+width: 100%;
+margin:auto;
+margin-top: 0rem;
+}
 
-#stdimage {
-    display: inline-block; 
+.rounded-top-20 {
+  border-top-right-radius: 30px!important;
+  border-top-left-radius: 30px!important;
+}
+
+.rounded-bottom-20 {
+  border-bottom-left-radius: 20px!important;
+  border-bottom-right-radius: 20px!important;
+}
+
+.card {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: black;
+}
+/* .card img
+{
+padding-left: 12px;
+padding-top: 12px;
+
+} */
+
+.d-flex {
+    justify-content: center;
+}
+
+.p-2 {
+  background-color: rgba(255, 255, 255, 0.3);
+    width: 20rem;
+    margin-right: 0.5rem;
+    margin-left: 4rem;
+    margin-bottom: 1rem;
+}
+.caption .userimage {
+    display: inline-block;
     height: 50px;
     width: 50px;
+    margin: auto;
+    margin-top :20px ;
     border-radius: 25px;
 }

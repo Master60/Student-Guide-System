@@ -18,6 +18,18 @@ body {
     background: rgba(0, 0, 0, 0.89) !important;
 
 }
+.card img
+{
+padding-left: 12px;
+padding-top: 12px;
+}
+
+.userimage {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+}
 
 .navbar-brand img {
     height: 2rem;
@@ -114,12 +126,7 @@ margin-top: 0rem;
     background-color: rgba(255, 255, 255, 0.3);
     color: black;
 }
-.card img
-{
-padding-left: 12px;
-padding-top: 12px;
 
-}
 
 .d-flex {
     justify-content: center;
