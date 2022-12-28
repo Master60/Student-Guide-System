@@ -77,9 +77,39 @@ END
 $$ 
 delimiter ; 
 
-SELECT * FROM sgs.article;
 
-call postTicket('tArt01', '2', '1200100' , 'text Post Ticket Procedure ' , 'test');
+ /*Article Txt , ArticleId , userID , F_Name , L_Name , imgrefrence */
+DELIMITER $$ 
+CREATE PROCEDURE GetSubArticles(IN  ArtID varchar(20) )  
+BEGIN  
+
+select ArticleID , ArticleText , userID, F_Name,  L_Name , imageReference 
+from ( select * 
+from (Select ChildID from article_parent where ParentID =  ArtID ) as A , article 
+where A.ChildID = article.ArticleID and article.A_type= 'Comment' ) AS N , users 
+where users.LoginID = N.userID ; 
+
+END 
+$$ 
+delimiter ; 
+
+DELIMITER $$ 
+CREATE PROCEDURE GetComments(IN  ArtID varchar(20) )  
+BEGIN  
+
+select ArticleID , ArticleText , userID, F_Name,  L_Name , imageReference 
+from ( select * 
+from (Select ChildID from article_parent where ParentID =  ArtID ) as A , article 
+where A.ChildID = article.ArticleID and article.A_type= 'SubArticle' ) AS N , users 
+where users.LoginID = N.userID ; 
+
+END 
+$$ 
+delimiter ; 
+
+
+select * from articletype;
+
 
 
 
