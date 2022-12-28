@@ -61,7 +61,9 @@
                 <h3>The Student Guide System</h3>
                 <% if (previous) { %> <h5 style="text-align: center; color: red;"><%= previous.Failure %></h5> <% } %>
                 <label>Ticket Title</label>
-                <input name="Title" required maxlength="100">
+                
+                <input name="Title" required <% if(previous) {%> value="<%= previous.Title %>" <%}%>  maxlength="100"> 
+                
                 <br>
                 <label for="Course"><b>Course</b></label>
                 <select name="Course" id="Course" required>
@@ -72,7 +74,7 @@
                 </select>
                 <div class="form-group">
                     <label for="comment">Ticket Description</label>
-                    <textarea required class="form-control" rows="5" name="complaint" id="comment"></textarea>
+                    <textarea required class="form-control" rows="5" name="complaint" id="comment"><%if(previous){%><%=previous.RequestText%><%}%></textarea>
                     <button>Submit Request</button>
                 </div>
             </div>

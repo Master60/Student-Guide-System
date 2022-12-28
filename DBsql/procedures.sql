@@ -59,6 +59,27 @@ END
 $$ 
 delimiter ; 
 
+/*Article , Article about course , ticketdone true false ;*/
+/* input parameter = ARticleId , courseID , userId ,  */
+
+DELIMITER $$ 
+CREATE PROCEDURE postTicket(IN  ArtID varchar(20) , IN CID varchar(20) , IN UID varchar(20) , IN Articletxt text , IN tickettxt varchar(100) ) 
+BEGIN  
+INSERT into article 
+values (ArtID,'RequestHelp' , CURRENT_TIMESTAMP , UID ,Articletxt); 
+
+INSERT into ticket_closed 
+values (ArtID , 0 , tickettxt); 
+
+INSERT INTO  a_about_course 
+values (CID, ArtID ) ; 
+END 
+$$ 
+delimiter ; 
+
+SELECT * FROM sgs.article;
+
+call postTicket('tArt01', '2', '1200100' , 'text Post Ticket Procedure ' , 'test');
 
 
 
