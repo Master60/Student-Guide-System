@@ -12,10 +12,12 @@ router.get("/profile", function (req, res, next) {
                 if (err) {
                     console.log(err)
                 }
-
-                res.render("Nuno Theme Starter Files/Student_Profile.ejs", {
-                    userObj: user[0]
-                });
+                else {
+                    connection.query("SELECT * FROM Courses, s_takes_c WHERE s_takes_c")
+                    res.render("Nuno Theme Starter Files/Student_Profile.ejs", {
+                        userObj: user[0]
+                    });
+                }
             });
         }
     })
@@ -58,8 +60,8 @@ router.post("/postTicket", function (req, res, next) {
             else {
                 if (req.body.Title.length <= 100) {
                     var newCount = newArticleID[0]["COUNT(ArticleID)"] + 202;
-                        connection.query("CALL postTicket(?, ?, ?, ?, ?)", ["Artn0" + newCount,
-                    req.body.Course, req.session.identity, req.body.complaint || undefined, req.body.Title || undefined], function(err) {
+                    connection.query("CALL postTicket(?, ?, ?, ?, ?)", ["Artn0" + newCount,
+                    req.body.Course, req.session.identity, req.body.complaint || undefined, req.body.Title || undefined], function (err) {
                         if (err) {
                             req.session.PreviousRequest = req.body;
                             req.session.Failure = "Illegal Submission Made";
