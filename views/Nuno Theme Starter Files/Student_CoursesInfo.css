@@ -40,13 +40,17 @@ body {
 }
 
 .caption {
-    width: 100%;
+    width: 80%;
     max-width: 100%;
     position: absolute;
     top: 20%;
     z-index: 1;
     color: white;
     text-transform: uppercase;
+    background-color: #595a5e;
+    border-radius: 50px;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .caption h1 {
@@ -82,4 +86,25 @@ body {
 .table {
     width:65%;
     margin-left: 17%;
+    margin-top: 2rem;
+}
+
+button {
+    border-radius: 100px;
+    font-size: large;
+    color: black;
+    background-color: blanchedalmond;
+    padding: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+p {
+    width:75%;
+    margin-left: 12.5%;
+}
+
+img {
+    margin-top: 1rem;
 }
