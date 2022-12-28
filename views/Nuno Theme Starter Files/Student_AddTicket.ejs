@@ -67,7 +67,7 @@
                 <select name="Course" id="Course" required>
                     <option value="" selected disabled hidden>Select Course</option>
                     <% courses.forEach(function(val) { %>
-                        <option value="<%= val.CourseID %>"><%= val.Course_Name %></option>
+                        <option <% if (previous && previous.Course == val.CourseID) { %> selected <% } %> value="<%= val.CourseID %>"><%= val.Course_Name %></option>
                     <% }); %>
                 </select>
                 <div class="form-group">
