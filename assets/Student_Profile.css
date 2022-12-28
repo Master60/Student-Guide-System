@@ -63,6 +63,9 @@ body {
     padding-bottom: 4rem;
 
 }
+.caption h5 {
+    font-weight: bold;
+}
 
 .caption h6 {
   padding-bottom: 10px;
