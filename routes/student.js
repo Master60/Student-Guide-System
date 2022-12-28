@@ -13,10 +13,12 @@ router.get("/profile", function (req, res, next) {
                     console.log(err)
                 }
                 else {
-                    connection.query("SELECT * FROM Courses, s_takes_c WHERE s_takes_c")
-                    res.render("Nuno Theme Starter Files/Student_Profile.ejs", {
-                        userObj: user[0]
-                    });
+                    connection.query("SELECT * FROM Courses, s_takes_c WHERE Courses.CourseID = s_takes_c.CourseID s_takes_c.StudentID=" + req.session.identity, function (err, userCourses) {
+                        res.render("Nuno Theme Starter Files/Student_Profile.ejs", {
+                            userObj: user[0],
+                            userCourse: userCourses[0]
+                        });
+                    })
                 }
             });
         }
