@@ -40,13 +40,17 @@ body {
 }
 
 .caption {
-    width: 100%;
+    width: 80%;
     max-width: 100%;
     position: absolute;
-    top: 13%;
+    top: 20%;
     z-index: 1;
     color: white;
     text-transform: uppercase;
+    background-color: #595a5e;
+    border-radius: 50px;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .caption h1 {
@@ -79,42 +83,28 @@ body {
     z-index: -1000;
 }
 
-.form-group {
-    background: rgba(255, 255, 255, 0.3) !important;
-    height: 32rem;
-    text-align: left;
-    width: 100%;
-}
-.form-group label{
-  padding-left: 35px;
-}
-.form-group h2{
-  padding-left: 9px;
-  padding-top: 5px;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
-}
-.form-group textarea{
-  margin:auto;
-  width: 85rem;
-}
-.form-group select{
- margin:auto;
-  width: 85rem;
-}
-.form-group button{
-  margin-left: 79.5rem;
-  margin-top: 0.5rem;
-
-
+.table {
+    width:65%;
+    margin-left: 17%;
+    margin-top: 2rem;
 }
 
-.rounded-top-20 {
-  border-top-right-radius: 20px!important;
-  border-top-left-radius: 20px!important;
+button {
+    border-radius: 100px;
+    font-size: large;
+    color: black;
+    background-color: blanchedalmond;
+    padding: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-bottom: 1.5rem;
 }
 
-.rounded-bottom-20 {
-  border-bottom-left-radius: 20px!important;
-  border-bottom-right-radius: 20px!important;
+p {
+    width:75%;
+    margin-left: 12.5%;
+}
+
+img {
+    margin-top: 1rem;
 }

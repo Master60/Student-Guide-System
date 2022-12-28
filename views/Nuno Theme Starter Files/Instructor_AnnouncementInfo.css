@@ -40,13 +40,16 @@ body {
 }
 
 .caption {
-    width: 100%;
+    width: 90%;
     max-width: 100%;
     position: absolute;
-    top: 13%;
+    top: 22%;
     z-index: 1;
     color: white;
     text-transform: uppercase;
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin-left: 5%;
 }
 
 .caption h1 {
@@ -79,42 +82,41 @@ body {
     z-index: -1000;
 }
 
-.form-group {
-    background: rgba(255, 255, 255, 0.3) !important;
-    height: 32rem;
-    text-align: left;
-    width: 100%;
-}
-.form-group label{
-  padding-left: 35px;
-}
-.form-group h2{
-  padding-left: 9px;
-  padding-top: 5px;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
-}
-.form-group textarea{
-  margin:auto;
-  width: 85rem;
-}
-.form-group select{
- margin:auto;
-  width: 85rem;
-}
-.form-group button{
-  margin-left: 79.5rem;
-  margin-top: 0.5rem;
-
-
+.row {
+    margin-top: 3rem;
+    justify-content: left;
+    margin-bottom: 1.1rem;
 }
 
-.rounded-top-20 {
-  border-top-right-radius: 20px!important;
-  border-top-left-radius: 20px!important;
+.col-md-8 {
+    background-color: cornflowerblue;
+    border-radius: 20px;
+    margin-right: 2.5%;
 }
 
-.rounded-bottom-20 {
-  border-bottom-left-radius: 20px!important;
-  border-bottom-right-radius: 20px!important;
+.col-md-1 {
+    margin-left: 8.4%;
+    margin-right: 8.4%;
+}
+
+.col-md-6 {
+    background-color: aliceblue;
+    border-radius: 20px;
+    color: black;
+}
+
+.col-md-2 {
+    margin-left: 4%;
+    margin-right: 3%;
+}
+
+button {
+    padding: 0.3rem;
+    border-radius: 5px;
+    background-color: rgba(238, 156, 56, 0.642);
+    color: black;
+}
+
+button:hover {
+    background-color: #FFD700;
 }

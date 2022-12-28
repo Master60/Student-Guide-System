@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SGS - Add Ticket</title>
+    <title>SGS - Course Info</title>
     <link rel="stylesheet" href="bootstrap-4.1.3-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="Student_AddTicket.css">
+    <link rel="stylesheet" href="Instructor_CoursesInfo.css">
     <link rel="stylesheet" href="css/fixed.css">
 </head>
 
@@ -14,7 +14,9 @@
 
     <!--- Start Home Section -->
     <div id="fixed"></div>
-    <div id="add-ticket">
+    <div id="course-info">
+
+        <!-- course image, course name, course code, university, faculty, number of credits, programs, availability semester, description article, course coordinator, course instructors -->
 
         <!--- Navigation -->
         <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
@@ -22,7 +24,6 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
 
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav mx-auto">
@@ -54,56 +55,57 @@
         <!--- End Navigation-->
 
         <!--- Start Landing Page Section -->
-    <!--    <form>
-            <div class="caption text-center">
-
-                <h3>Request help</h3>
-                <label>Ticket Title</label>
-                <textarea></textarea>
-                <br>
-                <label for="Course"><b>Course</b></label>
-                <select name="" id="Course">
-                    <option value="null" selected disabled hidden>Select Course</option>
-                    <option value="student"> Student</option>
-                    <option value="Instructor">Instructor</option>
-                    <option value="adminstration">Adminstration</option>
-                    <option value="graduate">Graduate</option>
-                </select>
-                <div class="form-group">
-                    <label for="comment">Ticket Description</label>
-                    <textarea class="form-control" rows="5" id="comment"></textarea>
-                    <button>Submit Request</button>
-                </div>
-            </div>
-        </form>
-      -->
-  <form>
-  <div class="caption text-center">
-
-  <div class="form-group rounded-top-20 rounded-bottom-20 ">
-    <h2> Create a new ticket</h2>
-
-    <label> Title</label>
-    <textarea placeholder="Ticket Title" class="form-control" id="comment" rows="1"></textarea>
-    <br>
-    <label> Course</label>
-    <select class="form-control" id="Course">
-      <option value="null" selected disabled hidden>Select Course</option>
-      <option value="student"> Student</option>
-      <option value="Instructor">Instructor</option>
-      <option value="adminstration">Adminstration</option>
-      <option value="graduate">Graduate</option>
-    </select>
-
-    <br>
-    <textarea placeholder="Ticket Description" class="form-control" id="comment" rows="8"></textarea>
-
-    <button type="button" class="btn btn-light">Submit Ticket</button>
-
-  </div>
-  </div>
-</form>
-
+        <div class="caption text-center">
+            <a href="#"><img src="img/SGS1.png"></a>
+            <h1>ELCN112</h1>
+            <h3>Circuits-2</h3>
+            <button>Follow</button>
+            <br>
+            <label>University:</label>
+            <label>Cairo University</label>
+            <br>
+            <label>Faculty:</label>
+            <label>Faculty of Engineering</label>
+            <br>
+            <label>Credits:</label>
+            <label>3</label>
+            <br>
+            <label>Programs:</label>
+            <label>CCE</label>
+            <br>
+            <label>Availability Semester:</label>
+            <label>Always</label>
+            <br>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, porro repellendus hic nihil nisi
+                magnam consectetur, laborum vitae cupiditate voluptates quam beatae eius quia iusto perspiciatis
+                dolorum, corrupti officiis explicabo.
+            </p>
+            <table class="table table-hover table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Contact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td><a href="">Mark</a></td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td><a href="">Jacob</a></td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         <!--- End Landing Page Section-->
 
     </div>

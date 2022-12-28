@@ -40,10 +40,11 @@ body {
 }
 
 .caption {
-    width: 100%;
+    width: 75%;
     max-width: 100%;
     position: absolute;
-    top: 13%;
+    top: 26%;
+    margin-left: 12.2%;
     z-index: 1;
     color: white;
     text-transform: uppercase;
@@ -64,8 +65,9 @@ body {
 }
 
 .caption img {
-    height: 6rem;
+    height: 8rem;
     margin-bottom: 2rem;
+
 }
 
 #fixed {
@@ -79,42 +81,25 @@ body {
     z-index: -1000;
 }
 
-.form-group {
-    background: rgba(255, 255, 255, 0.3) !important;
-    height: 32rem;
-    text-align: left;
-    width: 100%;
-}
-.form-group label{
-  padding-left: 35px;
-}
-.form-group h2{
-  padding-left: 9px;
-  padding-top: 5px;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
-}
-.form-group textarea{
-  margin:auto;
-  width: 85rem;
-}
-.form-group select{
- margin:auto;
-  width: 85rem;
-}
-.form-group button{
-  margin-left: 79.5rem;
-  margin-top: 0.5rem;
-
-
+.input-group {
+    margin-top: 3rem;
 }
 
-.rounded-top-20 {
-  border-top-right-radius: 20px!important;
-  border-top-left-radius: 20px!important;
+a h5:hover {
+    color: #FFD700;
 }
 
-.rounded-bottom-20 {
-  border-bottom-left-radius: 20px!important;
-  border-bottom-right-radius: 20px!important;
+svg.svg-inline--fa {
+    color: #FFD700;
+    margin-bottom: 3rem;
+}
+
+.d-flex {
+    justify-content: center;
+}
+
+.p-2 {
+    background: rgba(255, 255, 255, 0.2);
+    width: 17.5rem;
+    margin: 1rem;
 }
