@@ -13,6 +13,7 @@ var express = require("express"),
     flash = require("connect-flash"),
     con = require("./DBsql/DB"),
     UserRoute = require("./routes/user.js"),
+    StudentRoute = require("./routes/student"),
     CoursesRoute = require("./routes/courses");
 
 app.use(flash());
@@ -36,6 +37,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(UserRoute);
+app.use(StudentRoute);
 app.use("/courses/", CoursesRoute);
 
 app.use(express.static("assets"));

@@ -58,6 +58,20 @@ CREATE TABLE Article (
 	ON UPDATE cascade
 );
 
+CREATE TABLE `sgs`.`article_parent` (
+  `ParentID` VARCHAR(20) NOT NULL,
+  `ChildID` VARCHAR(20) NOT NULL,
+  PRIMARY KEY (`ParentID`, `ChildID`),
+    FOREIGN KEY (`ParentID`)
+    REFERENCES `sgs`.`article` (`ArticleID`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+    FOREIGN KEY (`ChildID`)
+    REFERENCES `sgs`.`article` (`ArticleID`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
 CREATE TABLE PROGRAM(
 	ProgramID varchar(20) not null , 
 	P_Name varchar(50) not null, 

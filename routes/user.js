@@ -1,7 +1,6 @@
-const { isLoggedIn, isAuthorized, goToReferrer } = require("../middleware/index");
+const { isLoggedIn, isAuthorized } = require("../middleware/index");
 const { encrypt, compare } = require("../middleware/encrypt");
 const connection = require("../DBsql/DB");
-const { query } = require("express");
 var express = require("express"),
     router = express.Router({ mergeParams: true });
 
@@ -65,24 +64,6 @@ router.post("/register", isLoggedIn, function (req, res) {
 
 router.post("/logout", isAuthorized, function (req, res) {
 
-});
-
-router.get("/profile", function (req, res, next) {
-    req.session.refe = req.route.path;
-    isAuthorized(req, res, function () {
-        if (req.session.userType == "Student") {
-            connection.query(`SELECT * FROM Users, Students, Program WHERE Program.ProgramID = Students.ProgramID
-            AND Students.LoginID = Users.LoginID AND Users.LoginID='` + req.session.identity + "'", function (err, user) {
-                if (err) {
-                    console.log(err)
-                }
-                
-                res.render("Nuno Theme Starter Files/Student_Profile.ejs", {
-                    userObj: user[0]
-                });
-            });
-        }
-    })
 });
 
 module.exports = router;
