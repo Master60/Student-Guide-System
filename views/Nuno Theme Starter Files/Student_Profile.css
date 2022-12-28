@@ -89,10 +89,9 @@ height: 8rem;
 {
 color: black;
 opacity: 50%;
-width: 38rem;
+width: auto;
 margin:auto;
 margin-top: 2.5rem;
-
 }
 
 .rounded-top-20 {
@@ -103,4 +102,20 @@ margin-top: 2.5rem;
 .rounded-bottom-20 {
   border-bottom-left-radius: 25px!important;
   border-bottom-right-radius: 25px!important;
+}
+
+.card {
+    width: 100%;
+}
+
+.d-flex {
+    justify-content: center;
+}
+
+.p-2 {
+    background: rgba(114, 169, 247, 0.286);
+    width: 20rem;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+    margin-bottom: 1rem;
 }
