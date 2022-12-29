@@ -56,7 +56,28 @@ router.get("/announcements", function (req, res, next) {
             }
         });
     });
-})
+});
+
+
+router.get("/announcements/:article", function (req, res, next) {
+    req.session.refe = "/announcements/" + req.params.article;
+    isAuthorized(req, res, function () {
+        connection.query("CALL GetComments(?)", [req.params.article], function (err, comments) {
+            connection.query("SELECT * FROM Article, Users WHERE UserID = LoginID AND ArticleID = '" + req.params.article + "'", function (err, text) {
+                connection.query("SELECT * FROM Users WHERE LoginID='" + req.session.identity + "'", function (err, cuserData) {
+                    res.render("Nuno Theme Starter Files/Student_AnnouncementInfo.ejs", {
+                        Article: text[0],
+                        commentArray: comments[0],
+                        currentUser:  cuserData[0]
+                    })
+                })
+            })
+        })
+    })
+});
+
+
+router.post("/announcements/articles")
 
 router.post("/register", isLoggedIn, function (req, res) {
 
