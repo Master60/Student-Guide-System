@@ -48,6 +48,4 @@ router.get("/:course", function (req, res, next) {
     });
 });
 
-connection.query("CALL GetContactsOf(?)", ["1300100"], function (err, contact) {console.log(contact)})
-
 module.exports = router;
