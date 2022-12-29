@@ -1,3 +1,5 @@
+const { connect } = require("./DBsql/DB");
+
 var express = require("express"),
     app = express(),
     bodyParser = require("body-parser"),
@@ -60,6 +62,15 @@ http.listen(2305, function () {
                     socket.emit("coursesSearched", result);
                 });
             }
+        });
+        socket.on("AddFollow", function(r) {
+            con.query("INSERT INTO s_takes_c VALUES ('" + r.CourseID + "', '" + r.UserID + "')", function(err, result) {
+            })
+        });
+
+        socket.on("DeleteFollow", function(r) {
+            con.query("DELETE FROM s_takes_c WHERE CourseID='" + r.CourseID + "' AND StudentID='" + r.UserID + "'", function(err, result) {
+            })
         });
         /*socket.on("Refer", function(ref) {
             refe = ref;

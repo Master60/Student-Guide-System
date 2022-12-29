@@ -46,7 +46,8 @@ router.get("/:course", function (req, res, next) {
                                             InstructorName: Names[0],
                                             contactObj: contacttemp,
                                             LearningMaterial: Elearning[0],
-                                            follow: follows[0]["COUNT(*)"]
+                                            follow: follows[0]["COUNT(*)"],
+                                            User: [req.session.identity, req.params.course]
                                         });
 
                                     });

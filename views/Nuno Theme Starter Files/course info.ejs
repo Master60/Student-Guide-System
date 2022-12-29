@@ -53,7 +53,8 @@
             </div>
         </nav>
         <!--- End Navigation-->
-
+        <h6 id="Hi" style="display: none;"><%= User[0] %></h6>
+        <h6 id="Byeeeee" style="display: none;"><%= User[1] %></h6>
         <!--- Start Landing Page Section -->
         <div class="caption text-center">
             <a href="#"><img src="img/SGS1.png"></a>
@@ -65,7 +66,7 @@
             <label>Faculty:</label>
             <label><%= course.C_name %></label>
             <br>
-            <button><% if (!follow) { %> Follow <% } else { %> Unfollow <% } %></button>
+            <button id="Following"><% if (!follow) { %> Follow <% } else { %> Unfollow <% } %></button>
             <br>
             <label>Credits:</label>
             <label><%= course.credits %></label>
@@ -145,7 +146,7 @@
     <script src="bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v6.2.1/js/all.js"></script>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="/js/Reference.js"></script>
+    <script src="/js/Follow.js"> </script>
     <!--- End of Script Source Files -->
 
 </body>
