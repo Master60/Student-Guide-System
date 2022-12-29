@@ -14,7 +14,7 @@
 
     <!--- Start Home Section -->
     <div id="fixed"></div>
-    <div id="contacts">
+    <div id="announcements">
 
         <!--- Navigation -->
         <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
@@ -28,25 +28,25 @@
                 <ul class="navbar-nav mx-auto">
                     <!--md, mx, ml-->
                     <li class="nav-item">
-                        <a class="nav-link" href="">Profile</a>
+                        <a class="nav-link" href="/profile">Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Announcements</a>
+                        <a class="nav-link" href="/announcements">Announcements</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Courses</a>
+                        <a class="nav-link" href="/courses">Courses</a>
                     </li>
                     <li>
                         <a class="navbar-brand" href=""><img src="img/SGS1.png"></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">HT</a>
+                        <a class="nav-link" href="/postTicket">HT</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Statistics</a>
+                        <a class="nav-link" href="/contacts">Contacts</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Contacts</a>
+                        <a class="nav-link" href="/logout">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -59,22 +59,26 @@
             <h1>Welcome to SGS</h1>
             <h3>The Student Guide System</h3>
             <div class="d-flex flex-wrap">
-               <% instructors.forEach(function(val) { %> 
-                <div class="p-2 bd-highlight">
-                    <div class="flex-item">
-                        <div class="card bg-info" style="width: 18rem;">
-                            <img class="card-img-top mt-4" src="<%= val.imageReference %>" alt="Card image cap" style="height: 50px; width: 50px; margin: auto;">
-                            <div class="card-body">
-                                <h5 class="card-title"><%= val.F_Name + " " + val.L_Name %></h5>
-                                <!--<p class="card-text">Some quick example text to build on the card title and make up the
+                <% instructors.forEach(function(val) { %>
+                    <div class="p-2 bd-highlight">
+                        <div class="flex-item">
+                            <div class="card bg-info" style="width: 18rem;">
+                                <img class="card-img-top mt-4" src="<%= val.imageReference %>" alt="Card image cap"
+                                    style="height: 50px; width: 50px; margin: auto;">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <%= val.F_Name + " " + val.L_Name %>
+                                    </h5>
+                                    <!--<p class="card-text">Some quick example text to build on the card title and make up the
                                     bulk of the card's
                                     content.</p>-->
-                                <a href="/users/profiles/<%= val.LoginID %>" class="btn btn-primary">Explore Profile</a>
+                                    <a href="/users/profiles/<%= val.LoginID %>" class="btn btn-primary">Explore
+                                        Profile</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <% }) %>
+                    <% }) %>
             </div>
         </div>
         <!--- End Landing Page Section-->

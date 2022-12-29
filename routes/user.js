@@ -45,16 +45,25 @@ router.post("/login", isLoggedIn, function (req, res, next) {
 router.get("/announcements", function (req, res, next) {
     req.session.refe = req.route.path;
     isAuthorized(req, res, function () {
-        connection.query("CALL PopulateAnnouncement(?)", [req.session.identity], function (err, result) {
-            if (err) {
-                console.log(err);
-            }
-            else {
-                res.render("Nuno Theme Starter Files/announcements.ejs", {
+        if (req.session.userType == "Student") {
+            connection.query("CALL PopulateAnnouncement(?)", [req.session.identity], function (err, result) {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    res.render("Nuno Theme Starter Files/announcements.ejs", {
+                        articles: result[0]
+                    });
+                }
+            });
+        }
+        else if (req.session.userType == "Instructor") {
+            connection.query("CALL PopulateInstructorAnnouncement(?)", [req.session.identity], function(err, result) {
+                res.render("Nuno Theme Starter Files/announcements_instructor.ejs", {
                     articles: result[0]
                 });
-            }
-        });
+            })
+        }
     });
 });
 
@@ -106,14 +115,16 @@ router.post("/register", isLoggedIn, function (req, res) {
 
 });
 
-router.post("/logout", isAuthorized, function (req, res) {
-
+router.get("/logout", isAuthorized, function (req, res) {
+    req.session.identity = undefined;
+    req.session.userType = undefined;
+    res.redirect("/");
 });
 
 router.get("/contacts", function (req, res, next) {
     isAuthorized(req, res, function () {
         connection.query("SELECT CollegeID FROM Users WHERE LoginID='" + req.session.identity + "'", function (err, result) {
-            connection.query("CALL GetCollegeInstructors(?)", [result[0].CollegeID], function(err, instructor) {
+            connection.query("CALL GetCollegeInstructors(?)", [result[0].CollegeID], function (err, instructor) {
                 if (err) {
                     console.log(err);
                 }
