@@ -43,7 +43,7 @@ body {
     width: 100%;
     max-width: 100%;
     position: absolute;
-    top: 15%;
+    top: 14%;
     z-index: 1;
     color: white;
     text-transform: uppercase;
@@ -57,26 +57,37 @@ body {
 
 }
 
-.caption h3 {
-    font-size: 2rem;
-    text-shadow: .1rem .1rem .5rem black;
-    padding-bottom: 4rem;
+
+.caption h2 {
+    margin-bottom: 2rem;
 
 }
 
-.caption h6 {
-  padding-bottom: 10px;
+.caption h3 {
+    font-size: 2rem;
+    text-shadow: .1rem .1rem .5rem black;
+    padding-bottom: 1.6rem;
+}
 
+.caption h4 {
+font-size: 1.4rem;
+color: #ffffff;
+}
+
+.caption h4:hover{
+text-decoration: underline;
+font-size: 1.6rem;
+color: #ffffff;
+transition: 0.5s;
+}
+
+.caption h5 {
+color: #4287f5;
 }
 
 .caption img {
     height: 6rem;
     margin-bottom: 2rem;
-}
-#stdimage
-{
-height: 8rem;
-
 }
 
 #fixed {
@@ -90,18 +101,9 @@ height: 8rem;
     z-index: -1000;
 }
 
-.list-group
-{
-color: black;
-opacity: 40%;
-width: 100%;
-margin:auto;
-margin-top: 0rem;
-}
-
 .rounded-top-20 {
-  border-top-right-radius: 30px!important;
-  border-top-left-radius: 30px!important;
+  border-top-right-radius: 20px!important;
+  border-top-left-radius: 20px!important;
 }
 
 .rounded-bottom-20 {
@@ -109,31 +111,21 @@ margin-top: 0rem;
   border-bottom-right-radius: 20px!important;
 }
 
-.card {
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.3);
-    color: black;
-}
-.card img
-{
-padding-left: 12px;
-padding-top: 12px;
-
-}
-
 .d-flex {
     justify-content: center;
-    margin-bottom: 8.5rem;
-}
-.btn{
-margin-left: 3.5rem;
-
+    width: 30rem;
+    margin:auto;
+    margin-top: 1.5rem;
 }
 
 .p-2 {
-  background-color: rgba(255, 255, 255, 0.3);
-    width: 20rem;
-    margin-right: 0.5rem;
-    margin-left: 4rem;
-    margin-bottom: 1rem;
+    background: rgba(255, 255, 255, 0.228);
+    width: 50rem;
+    height: 5rem;
+    margin: 1rem;
+    margin-bottom: 2.5rem;
+}
+.btn{
+height: 3rem;
+
 }

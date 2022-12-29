@@ -193,7 +193,21 @@ select C.CourseID, credits, Prefix ,C_Description, Course_Name, imageReference f
 from (select ProgramID from program where program.CollegeID = CoID ) AS P , istakenby 
 where p.ProgramID = istakenby.ProgramID ) as C , courses 
 where C.CourseID = courses.CourseID;  
+END 
+$$ 
+delimiter ; 
+
+
+DELIMITER $$ 
+CREATE PROCEDURE GetcoursesInCollege(IN  UID varchar(10) )  
+BEGIN  
+
+select TicketTitle from ticket_closed , 
+(select ArticleID  from Article where Article.userID = UID)as A 
+where ticket_closed.TicketID = A.ArticleID ; 
 
 END 
 $$ 
 delimiter ; 
+
+
