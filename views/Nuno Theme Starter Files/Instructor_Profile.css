@@ -123,6 +123,11 @@ padding-top: 12px;
 
 .d-flex {
     justify-content: center;
+    margin-bottom: 8.5rem;
+}
+.btn{
+margin-left: 3.5rem;
+
 }
 
 .p-2 {
