@@ -130,7 +130,17 @@ $$
 delimiter ; 
 
 
+DELIMITER $$ 
+CREATE PROCEDURE postComment(IN  ArtID varchar(20) , IN CID varchar(20) , IN UID varchar(20) , IN Articletxt text , IN commenttxt varchar(100) ) 
+BEGIN  
+INSERT into article 
+values (ArtID,'Comment' , CURRENT_TIMESTAMP , UID ,Articletxt); 
 
+INSERT INTO  a_about_course 
+values (CID, ArtID ) ; 
+END 
+$$ 
+delimiter ; 
 
 
 

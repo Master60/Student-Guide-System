@@ -65,10 +65,11 @@ router.get("/announcements/:article", function (req, res, next) {
         connection.query("CALL GetComments(?)", [req.params.article], function (err, comments) {
             connection.query("SELECT * FROM Article, Users WHERE UserID = LoginID AND ArticleID = '" + req.params.article + "'", function (err, text) {
                 connection.query("SELECT * FROM Users WHERE LoginID='" + req.session.identity + "'", function (err, cuserData) {
+                    console.log(comments)
                     res.render("Nuno Theme Starter Files/Student_AnnouncementInfo.ejs", {
                         Article: text[0],
                         commentArray: comments[0],
-                        currentUser:  cuserData[0]
+                        currentUser: cuserData[0]
                     })
                 })
             })
@@ -77,7 +78,29 @@ router.get("/announcements/:article", function (req, res, next) {
 });
 
 
-router.post("/announcements/articles")
+router.post("/announcements/articles", function (req, res, next) {
+    isAuthorized(req, res, function () {
+        connection.query("SELECT CourseID FROM a_about_course WHERE ArticleID='" + req.session.refe.substring(15,
+            req.session.refe.length) + "'", function (err, result) {
+                connection.query("SELECT COUNT(ArticleID) FROM Article", function (err, newArticleID) {
+                    if (err) {
+                        console.log(err);
+                    }
+                    else {
+                        var newCount = newArticleID[0]["COUNT(ArticleID)"] + 202;
+                        connection.query("CALL postComment(?, ?, ?, ?, ?)", ["Artn0" + newCount, result[0].CourseID,
+                        req.session.identity, req.body.Text, req.session.refe.substring(15,
+                            req.session.refe.length)], function (err, result) {
+                                if (err) {
+                                    console.log(err)
+                                }
+                                res.redirect(req.session.refe)
+                            })
+                    }
+                });
+            });
+    });
+})
 
 router.post("/register", isLoggedIn, function (req, res) {
 
