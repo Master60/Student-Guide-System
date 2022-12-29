@@ -22,6 +22,25 @@ router.get("/profile", function (req, res, next) {
                 }
             });
         }
+        else if (req.session.userType == "Instructor") {
+            connection.query(`SELECT * From Users, Instructor WHERE Users.LoginID=Instructor.LoginID
+            AND Users.LoginID='` + req.session.identity + "'", function(err, result) {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    connection.query("SELECT * FROM courses, teaches WHERE InstructorId='" + req.session.identity + "' AND "
+                    + "courses.CourseID=teaches.CourseID", function(err, q2) {
+                        if (!err) {
+                            res.render("Nuno Theme Starter Files/Instructor_Profile.ejs", {
+                                user: result[0],
+                                courses: q2
+                            });
+                        }
+                    })
+                }
+            })
+        }
     })
 });
 
@@ -87,7 +106,7 @@ router.post("/postTicket", function (req, res, next) {
 });
 
 router.get("/ticket", function(req, res, next) {
-    
+
 })
 
 module.exports = router;

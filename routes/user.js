@@ -5,7 +5,7 @@ var express = require("express"),
     router = express.Router({ mergeParams: true });
 
 router.get("/", function (req, res) {
-
+    res.render("Nuno Theme Starter Files/index2.ejs")
 });
 
 router.get("/home", function (req, res) {
