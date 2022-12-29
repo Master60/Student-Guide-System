@@ -86,4 +86,8 @@ router.post("/postTicket", function (req, res, next) {
     });
 });
 
+router.get("/ticket", function(req, res, next) {
+    
+})
+
 module.exports = router;

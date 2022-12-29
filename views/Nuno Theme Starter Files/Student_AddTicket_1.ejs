@@ -7,7 +7,40 @@
     <title>SGS - Add Ticket</title>
     <link rel="stylesheet" href="bootstrap-4.1.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="Student_AddTicket.css">
-    <link rel="stylesheet" href="css/fixed.css">
+    <link rel="stylesheet" href="fixed.css">
+
+    <script>
+        function validate() {
+            if (document.getElementById("error").style.display != "none") {
+                document.getElementsByTagName("form")[0].setAttribute("novalidate", "novalidate");
+                document.getElementById("Title").focus();
+                return false;
+            }
+            else if (document.getElementById("error1").style.display != "none") {
+                if (document.getElementById("Course").options[document.getElementById("Course").selectedIndex].value == "") {
+                    if (document.getElementsByTagName("form")[0].attributes['novalidate']) {
+                        document.getElementsByTagName("form")[0].attributes.removeNamedItem("novalidate");
+                    }
+                    document.getElementsByTagName("form")[0].reportValidity();
+                    return false;
+                }
+                document.getElementsByTagName("form")[0].setAttribute("novalidate", "novalidate");
+                document.getElementById("text").focus();
+                return false;
+            }
+            if (document.getElementsByTagName("form")[0].attributes['novalidate']) {
+                document.getElementsByTagName("form")[0].attributes.removeNamedItem("novalidate");
+            }
+            if (document.getElementsByTagName("form")[0].checkValidity()) {
+                document.getElementsByTagName("form")[0].submit();
+            }
+            else {
+                document.getElementsByTagName("form")[0].reportValidity()
+            }
+            return true;
+        }
+    </script>
+
 </head>
 
 <body data-spy="scroll" data-target="#navbarResponsive">
@@ -51,52 +84,34 @@
                 </ul>
             </div>
         </nav>
-        <!--- End Navigation-->
-
-        <!--- Start Landing Page Section -->
-    <!--    <form>
-            <div class="caption text-center">
-
-                <h3>Request help</h3>
-                <label>Ticket Title</label>
-                <textarea></textarea>
-                <br>
-                <label for="Course"><b>Course</b></label>
-                <select name="" id="Course">
-                    <option value="null" selected disabled hidden>Select Course</option>
-                    <option value="student"> Student</option>
-                    <option value="Instructor">Instructor</option>
-                    <option value="adminstration">Adminstration</option>
-                    <option value="graduate">Graduate</option>
-                </select>
-                <div class="form-group">
-                    <label for="comment">Ticket Description</label>
-                    <textarea class="form-control" rows="5" id="comment"></textarea>
-                    <button>Submit Request</button>
-                </div>
-            </div>
-        </form>
-      -->
   <form>
   <div class="caption text-center">
 
   <div class="form-group rounded-top-20 rounded-bottom-20 ">
     <h2> Create a new ticket</h2>
+    <% if (previous) { %>
+        <h5 style="text-align: center; color: red;">
+            <%= previous.Failure %>
+        </h5>
+    <% } %>
 
     <label> Title</label>
-    <textarea placeholder="Ticket Title" class="form-control" id="comment" rows="1"></textarea>
+    <textarea required maxlength="100" placeholder="Ticket Title" id="Title" name="Title" 
+    class="form-control" id="comment" rows="1"><% if(previous) {%> value="<%= previous.Title %>" <%}%></textarea>
+
     <br>
     <label> Course</label>
-    <select class="form-control" id="Course">
-      <option value="null" selected disabled hidden>Select Course</option>
-      <option value="student"> Student</option>
-      <option value="Instructor">Instructor</option>
-      <option value="adminstration">Adminstration</option>
-      <option value="graduate">Graduate</option>
+    <select class="form-control" id="Course" required>
+      <option value="" selected disabled hidden>Select Course</option>
+      <% courses.forEach(function(val) { %>
+        <option <% if (previous && previous.Course==val.CourseID) { %> selected <% } %>
+                value="<%= val.CourseID %>"><%= val.Course_Name %>
+        </option>
+        <% }); %>
     </select>
 
     <br>
-    <textarea placeholder="Ticket Description" class="form-control" id="comment" rows="8"></textarea>
+    <textarea required placeholder="Ticket Description" class="form-control" id="comment" rows="8"></textarea>
 
     <button type="button" class="btn btn-light">Submit Ticket</button>
 
