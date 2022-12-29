@@ -1,6 +1,0 @@
-Ctrl + Spacebar = Suggestion
-Ctrl + B = Toggle Sidebar
-Ctrl + C = Copy
-Ctrl + V = Paste
-Shift + Alt + Arrow Up/Down = Copy Line Up/Down
-Ctrl + L = Select Line
