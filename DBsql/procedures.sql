@@ -130,6 +130,20 @@ $$
 delimiter ; 
 
 
+DELIMITER $$ 
+CREATE PROCEDURE GetcoursesInCollege(IN  CoID varchar(10) )  
+BEGIN  
+select C.CourseID, credits, Prefix ,C_Description, Course_Name, imageReference from 
+(select courseID 
+from (select ProgramID from program where program.CollegeID = CoID ) AS P , istakenby 
+where p.ProgramID = istakenby.ProgramID ) as C , courses 
+where C.CourseID = courses.CourseID;  
+
+END 
+$$ 
+delimiter ; 
+
+
 
 
 
