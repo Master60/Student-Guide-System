@@ -43,10 +43,10 @@
                         <a class="nav-link" href="">HT</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Statistics</a>
+                        <a class="nav-link" href="">Contacts</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Contacts</a>
+                        <a class="nav-link" href="">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -62,52 +62,65 @@
             <div class="row row-1">
                 <div class="col-md-3">
                     <img style="width: 50px; height: 50px;" class="UserImage" src="<%= Article.imageReference %>">
-                    <h3><%= Article.F_Name + " " + Article.L_Name %></h3>
+                    <h3>
+                        <%= Article.F_Name + " " + Article.L_Name %>
+                    </h3>
                 </div>
                 <div class="col-md-8">
                     <div class="article">
-                        <p style="white-space: pre-line; text-align: left;"><%= Article.ArticleText %></p>
+                        <p style="white-space: pre-line; text-align: left;">
+                            <%= Article.ArticleText %>
+                        </p>
                     </div>
                 </div>
             </div>
-            
+
             <% commentArray.forEach(function(val) { %>
-            <div class="row row-2">
-                <div class="col-md-1">
-                    <img style="width: 50px; height: 50px;" class="UserImage" src="<%= val.imageReference %>">
-                    <h5><%= val.F_Name + " " + val.L_Name %></h5>
-                </div>
-                <div class="col-md-6">
-                    <div class="comment">
-                        <p style="white-space: pre-line; text-align: left;"><%= val.ArticleText %></p>
+                <div class="row row-2">
+                    <div class="col-md-1">
+                        <img style="width: 50px; height: 50px;" class="UserImage" src="<%= val.imageReference %>">
+                        <h5>
+                            <%= val.F_Name + " " + val.L_Name %>
+                        </h5>
                     </div>
-                </div>
-            </div>
-            <% }) %>
-            
-        <form action="/announcements/articles" method="POST">
-            <div class="row row-3">
-                <div class="col-md-2">
-                    <img style="width: 50px; height: 50px;" class="UserImage" src="<%= currentUser.imageReference %>">
-                    <h5><%= currentUser.F_Name + " " +  currentUser.L_Name %></h5>
-                </div>
-                <div class="col-md-7">
-                    <div class="input">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">Comment</span>
-                            </div>
-                            <textarea name="Text" class="form-control" id="CommentTxt" placeholder="Insert a Comment"
-                                aria-label="Username" aria-describedby="basic-addon1" style="resize: none;"></textarea>
+                    <div class="col-md-6">
+                        <div class="comment">
+                            <p style="white-space: pre-line; text-align: left;">
+                                <%= val.ArticleText %>
+                            </p>
                         </div>
                     </div>
-                    <button>Submit</button></form>
                 </div>
-            </div>
-        </form>
+                <% }) %>
 
+                    <form action="/announcements/articles" method="POST">
+                        <div class="row row-3">
+                            <div class="col-md-2">
+                                <img style="width: 50px; height: 50px;" class="UserImage"
+                                    src="<%= currentUser.imageReference %>">
+                                <h5>
+                                    <%= currentUser.F_Name + " " + currentUser.L_Name %>
+                                </h5>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="input">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1">Comment</span>
+                                        </div>
+                                        <textarea name="Text" class="form-control" id="CommentTxt"
+                                            placeholder="Insert a Comment" aria-label="Username"
+                                            aria-describedby="basic-addon1" style="resize: none;"></textarea>
+                                    </div>
+                                </div>
+                                <button>Submit</button>
+                    </form>
         </div>
-        <!--- End Landing Page Section-->
+    </div>
+    </form>
+
+    </div>
+    <!--- End Landing Page Section-->
     </div>
     <!--- End Home Section -->
 
