@@ -110,4 +110,10 @@ router.post("/logout", isAuthorized, function (req, res) {
 
 });
 
+router.get("/contacts", function(req, res, next) {
+    isAuthorized(req, res, function() {
+
+    });
+})
+
 module.exports = router;
