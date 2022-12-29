@@ -8,7 +8,7 @@ router.get("/profile", function (req, res, next) {
     isAuthorized(req, res, function () {
         if (req.session.userType == "Student") {
             connection.query(`SELECT * FROM Users, Students, Program WHERE Program.ProgramID = Students.ProgramID
-            AND Students.LoginID = Users.LoginID AND Users.LoginID='` + req.session.identity + "'", function (err, user) {
+            AND Students.LoginID = Users.LoginID AND Users.LoginID='` + req.session.identity + "'", function (err, user) {                                    
                 if (err) {
                     console.log(err)
                 }
@@ -16,10 +16,11 @@ router.get("/profile", function (req, res, next) {
                     connection.query("SELECT * FROM courses, s_takes_c WHERE courses.CourseID = s_takes_c.courseID AND s_takes_c.StudentID=" + req.session.identity, function (err, userCourses) {
                         res.render("Nuno Theme Starter Files/Student_Profile.ejs", {                            
                             userObj: user[0],
-                            userCourse: userCourses
+                            userCourse: userCourses, 
+                            
                         });
                     })
-                }
+                }               
             });
         }
     })
@@ -88,6 +89,14 @@ router.post("/postTicket", function (req, res, next) {
 
 router.get("/ticket", function(req, res, next) {
     
+    req.session.refe = req.route.path;
+    isAuthorized(req, res, function () {
+    connection.query("call GetTicketTitle(?)",[req.session.identity], function (err, Ticket) {
+            res.render("Nuno Theme Starter Files/ticket.ejs", {                            
+            TicketT : Ticket[0],             
+        });
+        });
+    })
 })
 
 module.exports = router;
