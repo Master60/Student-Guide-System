@@ -5,9 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SGS - Add Ticket</title>
-    <link rel="stylesheet" href="/bootstrap-4.1.3-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/Student_AddTicket.css">
-    <link rel="stylesheet" href="/fixed.css">
+    <link rel="stylesheet" href="bootstrap-4.1.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Student_AddTicket.css">
+    <link rel="stylesheet" href="fixed.css">
+
     <script>
         function validate() {
             if (document.getElementById("error").style.display != "none") {
@@ -27,9 +28,6 @@
                 document.getElementById("text").focus();
                 return false;
             }
-            if (document.getElementsByTagName("form")[0].attributes['novalidate']) {
-                document.getElementsByTagName("form")[0].attributes.removeNamedItem("novalidate");
-            }
             if (document.getElementsByTagName("form")[0].checkValidity()) {
                 document.getElementsByTagName("form")[0].submit();
             }
@@ -39,6 +37,7 @@
             return true;
         }
     </script>
+
 </head>
 
 <body data-spy="scroll" data-target="#navbarResponsive">
@@ -82,47 +81,48 @@
                 </ul>
             </div>
         </nav>
-        <!--- End Navigation-->
+  <form action="/postTicket" method="POST" novalidate onsubmit="event.preventDefault(); validate();">
+  <div class="caption text-center">
 
-        <!--- Start Landing Page Section -->
-        <form action="/postTicket" method="POST" novalidate onsubmit="event.preventDefault(); validate();">
-            <div class="caption text-center">
-                <a href="#"><img src="img/SGS1.png"></a>
-                <h1>Welcome to SGS</h1>
-                <h3>The Student Guide System</h3>
-                <% if (previous) { %>
-                    <h5 style="text-align: center; color: red;">
-                        <%= previous.Failure %>
-                    </h5>
-                    <% } %>
-                        <label>Ticket Title</label>
-                        <input id="Title" name="Title" <% if(previous) {%> value="<%= previous.Title %>" <%}%> required
-                                maxlength="100">
-                                <br>
-                                <div id="error" style="display: none;">
+  <div class="form-group rounded-top-20 rounded-bottom-20 " style="height: fit-content;">
+    <h2> Create a new ticket</h2>
+    <% if (previous) { %>
+        <h5 style="text-align: center; color: red;">
+            <%= previous.Failure %>
+        </h5>
+    <% } %>
+
+    <label> Title</label>
+    <textarea required maxlength="100" placeholder="Ticket Title" id="Title" name="Title" 
+    class="form-control" id="comment" rows="1"><% if(previous) {%> value="<%= previous.Title %>" <%}%></textarea>
+    <br>
+    <div id="error" class="ml-3" style="display: none;">
                                     <h6 style="color: red;">You can't input an article of all empty spaces</h6>
                                 </div>
-                                <label for="Course"><b>Course</b></label>
-                                <select name="Course" id="Course" required>
-                                    <option value="" selected disabled hidden>Select Course</option>
-                                    <% courses.forEach(function(val) { %>
-                                        <option <% if (previous && previous.Course==val.CourseID) { %> selected <% } %>
-                                                value="<%= val.CourseID %>"><%= val.Course_Name %>
-                                        </option>
-                                        <% }); %>
-                                </select>
-                                <div class="form-group">
-                                    <label for="comment">Ticket Description</label>
-                                    <textarea id="text" required class="form-control" rows="5" name="complaint"
-                                        id="comment"><%if(previous){%><%=previous.RequestText%><%}%></textarea>
-                                    <br>
-                                    <div id="error1" style="display: none;">
-                                        <h6 style="color: red;">You can't input an article of all empty spaces</h6>
-                                    </div>
-                                    <button>Submit Request</button>
-                                </div>
-            </div>
-        </form>
+    <br>
+    <label> Course</label>
+    <select class="form-control" id="Course" required>
+      <option value="" selected disabled hidden>Select Course</option>
+      <% courses.forEach(function(val) { %>
+        <option <% if (previous && previous.Course==val.CourseID) { %> selected <% } %>
+                value="<%= val.CourseID %>"><%= val.Course_Name %>
+        </option>
+        <% }); %>
+    </select>
+
+    <br>
+    <textarea required placeholder="Ticket Description" class="form-control" id="text" name="complaint" rows="8">
+        <%if(previous){%><%=previous.RequestText%><%}%></textarea>
+        <div id="error1" class="ml-3" style="display: none;">
+            <h6 style="color: red;">You can't input an article of all empty spaces</h6>
+        </div>
+
+    <button class="btn btn-light mb-3">Submit Ticket</button>
+
+  </div>
+  </div>
+</form>
+
         <!--- End Landing Page Section-->
 
     </div>
@@ -132,13 +132,14 @@
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v6.2.1/js/all.js"></script>
+
     <script>
         let title = document.getElementById("Title");
         let area = document.getElementById("text");
         window.onload = function (ev) {
             title.addEventListener("input", function () {
                 if (!this.value.replace(/\s/g, '').length) {
-                    document.getElementById("error").style.display = "inline";
+                    document.getElementById("error").style.display = "inline-block";
                 }
                 else {
                     document.getElementById("error").style.display = "none";
@@ -147,7 +148,7 @@
 
             area.addEventListener("input", function () {
                 if (!this.value.replace(/\s/g, '').length) {
-                    document.getElementById("error1").style.display = "inline";
+                    document.getElementById("error1").style.display = "inline-block";
                 }
                 else {
                     document.getElementById("error1").style.display = "none";
@@ -156,6 +157,7 @@
 
         }
     </script>
+
     <!--- End of Script Source Files -->
 
 </body>
