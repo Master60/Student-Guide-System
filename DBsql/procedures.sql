@@ -211,3 +211,10 @@ $$
 delimiter ; 
 
 
+DELIMITER $$ 
+CREATE PROCEDURE GetCollegeInstructors(IN  CoID varchar(10) )  
+BEGIN  
+SELECt * FROM Users natural JOIN Instructor;
+END 
+$$ 
+delimiter ; 

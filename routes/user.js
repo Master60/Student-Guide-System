@@ -110,9 +110,20 @@ router.post("/logout", isAuthorized, function (req, res) {
 
 });
 
-router.get("/contacts", function(req, res, next) {
-    isAuthorized(req, res, function() {
-
+router.get("/contacts", function (req, res, next) {
+    isAuthorized(req, res, function () {
+        connection.query("SELECT CollegeID FROM Users WHERE LoginID='" + req.session.identity + "'", function (err, result) {
+            connection.query("CALL GetCollegeInstructors(?)", [result[0].CollegeID], function(err, instructor) {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    res.render("Nuno Theme Starter Files/contacts.ejs", {
+                        instructors: instructor[0]
+                    })
+                }
+            })
+        })
     });
 })
 
