@@ -106,12 +106,28 @@ where users.LoginID = N.userID ;
 END 
 $$ 
 delimiter ; 
-
+/*1-	 2-		3-		 4- 	5-		 6-		*/
 
 select * from articletype;
 
 
+DELIMITER $$ 
+CREATE PROCEDURE GetContactsOf(IN  InstructorID varchar(10) )  
+BEGIN  
+select Contact from contactingdetails where contact.LoginID= InstructorID; 
+END 
+$$ 
+delimiter ; 
 
+
+DELIMITER $$ 
+CREATE PROCEDURE GetElearningMaterial(IN  CID varchar(20) )  
+BEGIN  
+
+select E_Name, E_Reference from e_learningmaterial where e_learningmaterial.CourseID = CID; 
+END 
+$$ 
+delimiter ; 
 
 
 

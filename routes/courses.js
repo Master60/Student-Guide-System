@@ -21,26 +21,31 @@ router.get("/:course", function (req, res, next) {
             connection.query("CALL RetrieveCourseArticleAndUser(" + req.params.course + ");", function (err, result) {
                 connection.query("Call GetSemesterName(?)", [req.params.course], function (err, Semesters) {
                     connection.query("call GetNameOfInstructor(?)", req.params.course, function (err, Names) {
-                        connection.query("CALL GetContactsOf(?)", [Names[0].LoginID], function (err, contact) {
-                            let contacttemp = undefined;
-                            for (let i = 0; i < contact[0].length; i++ ) {
-                                if(contact[0][i].ContactType == "email") {
-                                    contacttemp = contact[0][i].Contact;
-                                    break;
+                        connection.query("CALL GetContactsOf(?)", [Names[0][0].LoginID], function (err, contact) {
+                            connection.query("CALL GetElearningMaterial(?)", [req.params.course], function (err, Elearning) {
+    
+                                let contacttemp = undefined;
+                                for (let i = 0; i < contact[0].length; i++ ) {
+                                    if(contact[0][i].ContactType == "email") {
+                                        contacttemp = contact[0][i].Contact;
+                                        break;
+                                    }
                                 }
-                            }
 
-                            if (!contacttemp) {
-                                contacttemp = contact[0][0].Contact;
-                            }
-                            
-                            res.render("Nuno Theme Starter Files/course info.ejs", {
-                                course: result[0][0],
-                                Semester: Semesters[0],
-                                InstructorName: Names[0],
-                                contactObj: contacttemp
+                                if (!contacttemp) {
+                                    contacttemp = contact[0][0].Contact;
+                                }
+
+                                res.render("Nuno Theme Starter Files/course info.ejs", {
+                                    course: result[0][0],
+                                    Semester: Semesters[0],
+                                    InstructorName: Names[0],
+                                    contactObj: contacttemp,
+                                    LearningMaterial : Elearning[0]
+                                });
+                        
                             });
-                        })
+                        });
                     });
                 });
             });
