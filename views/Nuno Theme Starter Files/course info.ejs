@@ -65,7 +65,7 @@
             <label>Faculty:</label>
             <label><%= course.C_name %></label>
             <br>
-            <button>Follow</button>
+            <button><% if (!follow) { %> Follow <% } else { %> Unfollow <% } %></button>
             <br>
             <label>Credits:</label>
             <label><%= course.credits %></label>
