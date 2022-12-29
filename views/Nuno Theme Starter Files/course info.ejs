@@ -44,10 +44,10 @@
                         <a class="nav-link" href="">HT</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Statistics</a>
+                        <a class="nav-link" href="">Contacts</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Contacts</a>
+                        <a class="nav-link" href="">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -57,87 +57,109 @@
         <!--- Start Landing Page Section -->
         <div class="caption text-center">
             <a href="#"><img src="img/SGS1.png"></a>
-            <h1><%= course.Prefix %></h1>
-            <h3><%= course.Course_Name %></h3>
+            <h1>
+                <%= course.Prefix %>
+            </h1>
+            <h3>
+                <%= course.Course_Name %>
+            </h3>
             <label>University:</label>
             <label>Cairo University</label>
             <br>
             <label>Faculty:</label>
-            <label><%= course.C_name %></label>
+            <label>
+                <%= course.C_name %>
+            </label>
             <br>
             <button>Follow</button>
             <br>
             <label>Credits:</label>
-            <label><%= course.credits %></label>
+            <label>
+                <%= course.credits %>
+            </label>
             <br>
             <label>Programs:</label>
             <label>CCE</label>
             <br>
             <label>Availability Semester:</label>
-            <%  if( Semester.length > 0) { %>
-            <label>
-                <% for(let i =0 ;i < Semester.length-1  ; i++) { %>
-                    <%= Semester[i].SemesterName %>,
-                <% }; %>                
-                <%= Semester[Semester.length-1].SemesterName %>
-            </label>                  <!-- Print More data. Organize. Use server Power in Script. Encode URL  -->
-            <% } else { %>            
-                <lable style="color: red;"> No Info  </lable>                            
-            <% } %>       
-            <br>
-            <p>
-                <%= course.ArticleText %>
-            </p>
-            <%  if(InstructorName.length > 0 ){ %>.
-                <table class="table table-hover table-dark">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Contact</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <%  if( InstructorName.length > 0) { %>     
-                            <% for(let i =0 ;i < InstructorName.length  ; i++) { %>                        
-                                <tr>
-                                    <th scope="row"> <%= i+1 %> </th>
-                                    <td><%= InstructorName[i].F_Name %></td>
-                                    <td> <%= InstructorName[i].L_Name %></td>
-                                    <td><%= contactObj %></td>
-                                </tr>
-                            <% }; %> 
-                        <% } else { %>            
-                            <lable> No Info  </lable>                            
-                        <% } %>                                        
-                    </tbody>
-                </table>
-            <% }; %>
-                <table class="table table-hover table-dark">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Lecture</th>
-                            <th scope="col">Material</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% for(let i =0 ;i < LearningMaterial.length  ; i++) { %>                                                                        
-                            <tr>
-                                <th scope="row"> <%= i %> </th>
-                                <td><%= LearningMaterial[i].E_Name %> </td>
-                                <td><a href="<%= LearningMaterial[i].E_Reference %>"><%= LearningMaterial[i].E_Reference %></a></td>
-                            </tr>
-                        <% }; %> 
-                    </tbody>
-                </table>
+            <% if( Semester.length> 0) { %>
+                <label>
+                    <% for(let i=0 ;i < Semester.length-1 ; i++) { %>
+                        <%= Semester[i].SemesterName %>,
+                            <% }; %>
+                                <%= Semester[Semester.length-1].SemesterName %>
+                </label> <!-- Print More data. Organize. Use server Power in Script. Encode URL  -->
+                <% } else { %>
+                    <lable style="color: red;"> No Info </lable>
+                    <% } %>
+                        <br>
+                        <p>
+                            <%= course.ArticleText %>
+                        </p>
+                        <% if(InstructorName.length> 0 ){ %>.
+                            <table class="table table-hover table-dark">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">First</th>
+                                        <th scope="col">Last</th>
+                                        <th scope="col">Contact</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% if( InstructorName.length> 0) { %>
+                                        <% for(let i=0 ;i < InstructorName.length ; i++) { %>
+                                            <tr>
+                                                <th scope="row">
+                                                    <%= i+1 %>
+                                                </th>
+                                                <td>
+                                                    <%= InstructorName[i].F_Name %>
+                                                </td>
+                                                <td>
+                                                    <%= InstructorName[i].L_Name %>
+                                                </td>
+                                                <td>
+                                                    <%= contactObj %>
+                                                </td>
+                                            </tr>
+                                            <% }; %>
+                                                <% } else { %>
+                                                    <lable> No Info </lable>
+                                                    <% } %>
+                                </tbody>
+                            </table>
+                            <% }; %>
+                                <table class="table table-hover table-dark">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Lecture</th>
+                                            <th scope="col">Material</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% for(let i=0 ;i < LearningMaterial.length ; i++) { %>
+                                            <tr>
+                                                <th scope="row">
+                                                    <%= i %>
+                                                </th>
+                                                <td>
+                                                    <%= LearningMaterial[i].E_Name %>
+                                                </td>
+                                                <td><a href="<%= LearningMaterial[i].E_Reference %>">
+                                                        <%= LearningMaterial[i].E_Reference %>
+                                                    </a></td>
+                                            </tr>
+                                            <% }; %>
+                                    </tbody>
+                                </table>
         </div>
-          
+
         <!--- End Landing Page Section-->
     </div>
     <!--- End Home Section -->
-   
+
 
 
     <!--- Script Source Files -->
