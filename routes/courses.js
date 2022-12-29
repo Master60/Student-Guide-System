@@ -6,10 +6,13 @@ var express = require("express"),
 router.get("/", function (req, res, next) {
     req.session.refe = "/courses";
     isAuthorized(req, res, function () {
-        connection.query("SELECT * From courses", function (err, result) {
+        connection.query("select CollegeID from users where LoginID = " + req.session.identity + ";", function (err, result) {
+            console.log(result[0].CollegeID); 
+            connection.query("CALL GetcoursesInCollege(?)" , [result[0].CollegeID], function (err, CourseList) {
             res.render("Nuno Theme Starter Files/courses.ejs", {
-                courses: result
+                courses: CourseList[0]
             });
+        });
         });
     });
 });
@@ -52,5 +55,7 @@ router.get("/:course", function (req, res, next) {
         });
     });
 });
+
+
 
 module.exports = router;

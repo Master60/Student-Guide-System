@@ -131,6 +131,47 @@ delimiter ;
 
 
 DELIMITER $$ 
+CREATE PROCEDURE GetcoursesInCollege(IN  CoID varchar(10) )  
+BEGIN  
+select C.CourseID, credits, Prefix ,C_Description, Course_Name, imageReference from 
+(select courseID 
+from (select ProgramID from program where program.CollegeID = CoID ) AS P , istakenby 
+where p.ProgramID = istakenby.ProgramID ) as C , courses 
+where C.CourseID = courses.CourseID;  
+
+END 
+$$ 
+delimiter ; 
+
+
+DELIMITER $$ 
+CREATE PROCEDURE postComment(IN  ArtID varchar(20) , IN CID varchar(20) , IN UID varchar(20) , IN Articletxt text , IN commenttxt varchar(100) ) 
+BEGIN  
+INSERT into article 
+values (ArtID,'Comment' , CURRENT_TIMESTAMP , UID ,Articletxt); 
+
+
+INSERT INTO  a_about_course 
+values (CID, ArtID ) ; 
+END 
+$$ 
+delimiter ; 
+
+
+DELIMITER $$ 
+CREATE PROCEDURE GetcoursesInCollege(IN  CoID varchar(10) )  
+BEGIN  
+select C.CourseID, credits, Prefix ,C_Description, Course_Name, imageReference from 
+(select courseID 
+from (select ProgramID from program where program.CollegeID = CoID ) AS P , istakenby 
+where p.ProgramID = istakenby.ProgramID ) as C , courses 
+where C.CourseID = courses.CourseID;  
+
+END 
+$$ 
+delimiter ; 
+
+DELIMITER $$ 
 CREATE PROCEDURE postComment(IN  ArtID varchar(20) , IN CID varchar(20) , IN UID varchar(20) , IN Articletxt text , IN commenttxt varchar(100) ) 
 BEGIN  
 INSERT into article 
@@ -144,8 +185,15 @@ delimiter ;
 
 
 
+DELIMITER $$ 
+CREATE PROCEDURE GetcoursesInCollege(IN  CoID varchar(10) )  
+BEGIN  
+select C.CourseID, credits, Prefix ,C_Description, Course_Name, imageReference from 
+(select courseID 
+from (select ProgramID from program where program.CollegeID = CoID ) AS P , istakenby 
+where p.ProgramID = istakenby.ProgramID ) as C , courses 
+where C.CourseID = courses.CourseID;  
 
-
-
-
- 
+END 
+$$ 
+delimiter ; 
