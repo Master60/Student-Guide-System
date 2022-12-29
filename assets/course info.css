@@ -48,7 +48,16 @@ body {
     color: white;
     text-transform: uppercase;
 }
-
+button {
+    border-radius: 100px;
+    font-size: large;
+    color: black;
+    background-color: blanchedalmond;
+    padding: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-bottom: 1.5rem;
+}
 .caption h1 {
     font-size: 3.8rem;
     font-weight: 700;
