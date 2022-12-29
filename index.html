@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.1.1/chart.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <canvas id="myChart" width="1600" height="900"></canvas>
+    </div>
+
+    <script>
+        // Our labels along the x-axis
+        var years = [1500, 1600, 1700, 1750, 1800, 1850, 1900, 1950, 1999, 2050];
+        // For drawing the lines
+        var africa = [86, 114, 106, 106, 107, 111, 133, 221, 783, 2478];
+        var asia = [282, 350, 411, 502, 635, 809, 947, 1402, 3700, 5267];
+        var europe = [168, 170, 178, 190, 203, 276, 408, 547, 675, 734];
+        var latinAmerica = [40, 20, 10, 16, 24, 38, 74, 167, 508, 784];
+        var northAmerica = [6, 3, 2, 2, 7, 26, 82, 172, 312, 433];
+
+
+        var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: years,
+                datasets: [
+                    {
+                        data: africa
+                    }
+                ]
+            }
+        });
+    </script>
+
+</body>
+
+</html>
