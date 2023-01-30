@@ -82,7 +82,7 @@ router.post("/postTicket", function (req, res, next) {
             else {
                 if (req.body.Title.length <= 100) {
                     var newCount = newArticleID[0]["COUNT(ArticleID)"] + 202;
-                    if (req.body.complaint.replace(/\s/g, '').length && req.body.Title.replace(/\s/g, '').length) {
+                    if (req.body.complaint.replace(/\s/g, '').length && req.body.Title.replace(/\s/g, '').length && req.body.Course) {
                         connection.query("CALL postTicket(?, ?, ?, ?, ?)", ["Artn0" + newCount,
                         req.body.Course, req.session.identity, req.body.complaint || undefined, req.body.Title || undefined], function (err) {
                             if (err) {
@@ -91,6 +91,7 @@ router.post("/postTicket", function (req, res, next) {
                                 res.redirect("/postTicket");
                             }
                             else {
+                                req.session.PreviousRequest = undefined;
                                 res.redirect("/courses"); /// To Be Changed
                             }
                         })
